@@ -12,6 +12,28 @@ namespace XamarinTraining
         public MainPage()
         {
             InitializeComponent();
+            var mail = "as";
+            var paswd = "12";
+
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            if (email.Text == mail && pswd.Text == paswd)
+            {
+
+                DisplayAlert("Alert", "Sign In failed", "OK");
+            }
+
+            else
+            {
+                DisplayAlert("Alert", "Sign In Successful", "OK");
+            }
+        }
+
+        private void Entry_Completed1(object sender, EventArgs e)
+        {
+
         }
     }
 }
