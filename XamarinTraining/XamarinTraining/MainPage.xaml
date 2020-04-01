@@ -11,25 +11,26 @@
            VerticalOptions="CenterAndExpand" />
     </StackLayout>-->
     <ContentPage.Content>
-
-        <AbsoluteLayout BackgroundColor="Aqua">
-
-            <Image Source="people.png"  AbsoluteLayout.LayoutBounds=".5,.1,.8,.3" AbsoluteLayout.LayoutFlags="All"/>
-
-            <Entry x:Name="email" Placeholder="Username" PlaceholderColor="Black" AbsoluteLayout.LayoutBounds=".5,.4,.8,.06" AbsoluteLayout.LayoutFlags="All" Completed="Entry_Completed1" />
+        <AbsoluteLayout BackgroundColor="#b3f2dd">
             
-            <Entry x:Name="pswd" IsPassword="True" Placeholder="Password" PlaceholderColor="Black" MaxLength="8" AbsoluteLayout.LayoutBounds=".5,.5,.8,.06" AbsoluteLayout.LayoutFlags="All" />
-                
-            <Button Text="Sign In"
-                BackgroundColor="Blue"
+                <Image Source="user.png"   AbsoluteLayout.LayoutBounds=".5,.1,.8,.3" AbsoluteLayout.LayoutFlags="All"/>
+                <Image Source="tie.png"  BackgroundColor="White" AbsoluteLayout.LayoutBounds=".1,.4,.1,.06" AbsoluteLayout.LayoutFlags="All"/>
+
+                <Entry x:Name="email"  Placeholder="Username" PlaceholderColor="Black" Completed="EmailCompleted" BackgroundColor="White" AbsoluteLayout.LayoutBounds=".64,.4,.7,.06" AbsoluteLayout.LayoutFlags="All"  />
+            <Image Source="lock.png" BackgroundColor="White"  AbsoluteLayout.LayoutBounds=".1,.5,.1,.06" AbsoluteLayout.LayoutFlags="All"/>
+
+            <Entry x:Name="pswd"   IsPassword="True" Placeholder="Password" Completed="PswdCompleted"  BackgroundColor="White" PlaceholderColor="Black" MaxLength="8" AbsoluteLayout.LayoutBounds=".64,.5,.7,.06" AbsoluteLayout.LayoutFlags="All" />
+
+                <Button Text="Sign In"  x:Name="Signin"
+                BackgroundColor="#19d6d2"
                 TextColor="White"
                 BorderWidth="2"
                 Clicked="Button_Clicked"
-                AbsoluteLayout.LayoutBounds=".5,.6,.8,.06" AbsoluteLayout.LayoutFlags="All"/>
+                AbsoluteLayout.LayoutBounds=".47,.6,.8,.06" AbsoluteLayout.LayoutFlags="All"/>
+
             
+                
         </AbsoluteLayout>
-        
-        
         
         <!--<Grid x:Name="Dialer" RowSpacing="1" ColumnSpacing="1">
             <Grid.RowDefinitions>

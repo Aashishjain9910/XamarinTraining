@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,27 +13,59 @@ namespace XamarinTraining
         public MainPage()
         {
             InitializeComponent();
-            var mail = "as";
-            var paswd = "12";
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+
+        bool isValid;
+        public void EmailCompleted(object sender, EventArgs e)
         {
-            if (email.Text == mail && pswd.Text == paswd)
+            var inputEmail = "" + email.Text;
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            isValid = regex.IsMatch((inputEmail.ToString()).Trim());
+            if (!isValid)
             {
-
-                DisplayAlert("Alert", "Sign In failed", "OK");
+                DisplayAlert("Error", "Please enter the valid email", "ok");
             }
-
             else
             {
-                DisplayAlert("Alert", "Sign In Successful", "OK");
+                pswd.Focus();
+            }
+        }
+        public void PswdCompleted(object sender, EventArgs e)
+        {
+            var inputPassword = "" + pswd.Text;
+
+            if (inputPassword.Length == 0)
+            {
+                DisplayAlert("Error", "Please provide the password", "ok");
+            }
+            else
+            {
+                Signin.Focus();
             }
         }
 
-        private void Entry_Completed1(object sender, EventArgs e)
+        public void Button_Clicked(object sender, EventArgs e)
         {
+            var emailCheck = "" + email.Text;
+            var pswdCheck = "" + pswd.Text;
+            if (emailCheck.Length == 0 || pswdCheck.Length == 0)
+            {
+                DisplayAlert("Error", "Enter all Details", "OK");
+            }
+            var inputEmail = "" + email.Text;
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            isValid = regex.IsMatch((inputEmail.ToString()).Trim());
+            if (!isValid)
+            {
+                DisplayAlert("Error", "Incorrect Email", "OK");
+            }
+            else
+            {
+                DisplayAlert("SignIn Attempted", "Successful", "OK");
+
+            }
 
         }
     }
