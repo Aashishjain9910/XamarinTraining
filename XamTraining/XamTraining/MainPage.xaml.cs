@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace XamarinTraining
+namespace XamTraining
 {
+    // Learn more about making custom code visible in the Xamarin.Forms previewer
+    // by visiting https://aka.ms/xamarinforms-previewer
+    [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
-
         }
-
 
         bool isValid;
         public void EmailCompleted(object sender, EventArgs e)
@@ -52,7 +54,7 @@ namespace XamarinTraining
             var pswdCheck = "" + pswd.Text;
             var inputEmail = "" + email.Text;
             Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-            isValid = regex.IsMatch((inputEmail.ToString()).Trim()); 
+            isValid = regex.IsMatch((inputEmail.ToString()).Trim());
             if (emailCheck.Length == 0 || pswdCheck.Length == 0)
             {
                 DisplayAlert("Error", "Enter all Details", "OK");
@@ -68,5 +70,6 @@ namespace XamarinTraining
             }
 
         }
+
     }
 }

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamTraining.Views.SigninView">
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="#b3f2dd">
+
+            <Image Source="user.png" AbsoluteLayout.LayoutBounds=".5,.15,.8,.3" AbsoluteLayout.LayoutFlags="All" />
+
+            <Image Source="icons8user.png" BackgroundColor="White" Aspect="AspectFit" AbsoluteLayout.LayoutBounds=".1, .5, .06, .07" AbsoluteLayout.LayoutFlags="All" />
+            <Entry x:Name="mail" Text="{Binding Email}" Margin="0" Placeholder="Username" PlaceholderColor="Black" Completed="EmailCompleted" BackgroundColor="White"   AbsoluteLayout.LayoutBounds=".59, .5, .74, .07" AbsoluteLayout.LayoutFlags="All"  />
+
+            <Image Source="icons8lock.png" Aspect="AspectFit" BackgroundColor="White" AbsoluteLayout.LayoutBounds=".1, .6, .06,.07" AbsoluteLayout.LayoutFlags="All" />
+            <Entry x:Name="pswd" Text="{Binding Password}" Margin="0"  IsPassword="True" Placeholder="Password" Completed="PswdCompleted"  BackgroundColor="White" PlaceholderColor="Black" MaxLength="8" AbsoluteLayout.LayoutBounds=".59, .6, .74, .07" AbsoluteLayout.LayoutFlags="All" />
+
+            <Frame Padding="0" HasShadow="True" AbsoluteLayout.LayoutBounds=".48, .7, .8,.07"  AbsoluteLayout.LayoutFlags="All">
+                <Button Text="Sign In" Command="{Binding SubmitCommand}" x:Name="Signin" BackgroundColor="#19d6d2" Padding="0" FontSize="Medium" TextColor="White" BorderWidth="2" Clicked="Button_Clicked"/>
+            </Frame>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

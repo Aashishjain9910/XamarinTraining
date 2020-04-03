@@ -4,23 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace XamarinTraining
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using XamTraining.Models;
+
+namespace XamTraining.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SigninView : ContentPage
     {
-        public MainPage()
+
+        public SigninModel signinModel; 
+
+        public SigninView()
         {
             InitializeComponent();
+            signinModel = new SigninModel();
+            MessagingCenter.Subscribe<SigninModel,string>(this, "SigninAlert",(sender,email) =>
+            {
+                DisplayAlert("ALert", email,"okay!");
+            });
+            this.BindingContext = signinModel;
+
+            mail.Completed += (object sender, EventArgs e) =>
+              {
+                  pswd.Focus();
+              };
+
+            pswd.Completed += (object sender, EventArgs e) =>
+            {
+                signinModel.SubmitCommand.Execute(null);
+            };
 
         }
-
 
         bool isValid;
         public void EmailCompleted(object sender, EventArgs e)
         {
-            var inputEmail = "" + email.Text;
+            var inputEmail = "" + mail.Text;
             Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
             isValid = regex.IsMatch((inputEmail.ToString()).Trim());
             if (!isValid)
@@ -48,11 +70,11 @@ namespace XamarinTraining
 
         public void Button_Clicked(object sender, EventArgs e)
         {
-            var emailCheck = "" + email.Text;
+            var emailCheck = "" + mail.Text;
             var pswdCheck = "" + pswd.Text;
-            var inputEmail = "" + email.Text;
+            var inputEmail = "" + mail.Text;
             Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-            isValid = regex.IsMatch((inputEmail.ToString()).Trim()); 
+            isValid = regex.IsMatch((inputEmail.ToString()).Trim());
             if (emailCheck.Length == 0 || pswdCheck.Length == 0)
             {
                 DisplayAlert("Error", "Enter all Details", "OK");
@@ -68,5 +90,6 @@ namespace XamarinTraining
             }
 
         }
+
     }
 }
