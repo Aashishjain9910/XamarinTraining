@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -9,7 +10,13 @@ namespace XamTraining.Models
 {
     public class SigninModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler Show;
+        public SigninModel()
+        {
+
+        }
+
         public string email;
         public string Email
         {
@@ -21,6 +28,7 @@ namespace XamTraining.Models
             }
         }
         public string password;
+        private bool isValid;
         public string Password
         {
             get {return password; }
@@ -32,20 +40,34 @@ namespace XamTraining.Models
             }
 
         }
-        public ICommand SubmitCommand { get; set; }
-
-        public SigninModel()
+        public ICommand SubmitCommand
         {
-            SubmitCommand = new Command(OnSubmit);
+            get
+            {
+                return new Command(OnSubmit);
+            }
         }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnSubmit()
         {
-            if (string.IsNullOrEmpty(Email))
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
             {
-                MessagingCenter.Send(this, "SigninAlert", Email);
+                Show?.Invoke("Please enter Email & Password", null);
+            }
+            else
+            {
+                var inputEmail = "" + Email;
+                Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+                isValid = regex.IsMatch((inputEmail.ToString()).Trim());
+                if (!isValid)
+                {
+                    Show?.Invoke("Please enter the valid email", null);
+                }
+                else
+                {
+                    App.Current.MainPage.DisplayAlert("", "Signin Success", "OK");
+
+                }
             }
         }
 
