@@ -11,7 +11,7 @@ namespace XamTraining
         {
             InitializeComponent();
 
-            MainPage = new SigninView();
+            MainPage = new NavigationPage( new SigninView());
         }
 
         protected override void OnStart()

@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XamTraining.Views;
 
 namespace XamTraining.Models
 {
@@ -65,7 +66,8 @@ namespace XamTraining.Models
                 }
                 else
                 {
-                    App.Current.MainPage.DisplayAlert("", "Signin Success", "OK");
+                    
+                    App.Current.MainPage.Navigation.PushAsync(new WelcomeMasterDetailPage());
 
                 }
             }
