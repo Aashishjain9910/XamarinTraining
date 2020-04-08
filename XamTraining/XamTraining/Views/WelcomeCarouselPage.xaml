@@ -7,24 +7,26 @@
              x:Class="XamTraining.Views.WelcomeCarouselPage">
     <ContentPage>
         <StackLayout>
-            <Label Text="This is a CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
-            <Label Text="Red" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
+            <Label Text="This is a First CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
             <BoxView Color="Red" Margin="40" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
     <ContentPage>
         <StackLayout>
-            <Label Text="This is a CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
-            <Label Text="Blue" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
+            <Label Text="This is a Second CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
             <BoxView Color="Blue" Margin="40" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
     <ContentPage>
         <StackLayout>
-            <Label Text="This is a CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
-            <Label Text="Yellow" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
+            <Label Text="This is a Third CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
             <BoxView Color="Yellow" Margin="40" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
-    
+    <ContentPage>
+        <StackLayout>
+            <Label Text="This is a Fourth CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
+            <BoxView Color="Green" Margin="40" VerticalOptions="FillAndExpand" />
+        </StackLayout>
+    </ContentPage>
 </CarouselPage>

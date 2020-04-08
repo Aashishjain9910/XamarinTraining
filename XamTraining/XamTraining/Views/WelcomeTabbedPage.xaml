@@ -7,14 +7,27 @@
              x:Class="XamTraining.Views.WelcomeTabbedPage">
     <ContentPage Title="Tab 1">
         <StackLayout>
-            <Label Text="Green"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
+            <Label Text="This is the First Tab"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
             <BoxView Color="Green" Margin="20" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Tab 2">
         <StackLayout>
-            <Label Text="Blue" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5"  />
+            <Label Text="This is the Second Tab" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5"  />
             <BoxView Color="Blue" Margin="20" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
+    <ContentPage Title="Tab 3">
+        <StackLayout>
+            <Label Text="This is the Third Tab"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
+            <BoxView Color="Red" Margin="20" VerticalOptions="FillAndExpand" />
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Tab 4">
+        <StackLayout>
+            <Label Text="This is the Fourth Tab" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5"  />
+            <BoxView Color="Yellow" Margin="20" VerticalOptions="FillAndExpand" />
+        </StackLayout>
+    </ContentPage>
+    
 </TabbedPage>

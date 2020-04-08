@@ -14,16 +14,19 @@ namespace XamTraining
             MainPage = new NavigationPage( new SigninView());
         }
 
-        protected override void OnStart()
+        async protected override void OnStart()
         {
+            await MainPage.DisplayAlert("Alert", "This is the OnStart Alert", "OK");
         }
 
-        protected override void OnSleep()
+        async protected override void OnSleep()
         {
+            await MainPage.DisplayAlert("Alert", "This is the OnSleep Alert", "OK");
         }
 
-        protected override void OnResume()
+        async protected override void OnResume()
         {
+            await MainPage.DisplayAlert("Alert", "This is the OnResume Alert", "OK");
         }
     }
 }
