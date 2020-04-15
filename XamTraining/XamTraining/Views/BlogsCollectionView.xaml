@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"  Title="Blogs"
+             x:Class="XamTraining.Views.BlogsCollectionView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#f6f5f5">
+            <NavigationPage.TitleView>
+                <Label Text="Blogs" TextColor="Black" FontSize="Medium"/>
+            </NavigationPage.TitleView>
+            <CollectionView x:Name="collectionList" Margin="10">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#98e4e4" BackgroundColor="White" Margin="1" Padding="1" >
+                            <StackLayout  Margin="1" Padding="1">
+                                <Frame Margin="0" Padding="0" >
+                                    <Image x:Name="img" Source="{Binding BlogImage}" HorizontalOptions="Center" />
+                                </Frame>
+                                    <Label Text="{Binding BlogHeading}"  FontSize="Medium" TextColor="Black"/>
+                                    <CheckBox HorizontalOptions="End" VerticalOptions="End" Color="Black" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Save" TextColor="White" BackgroundColor="Red" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

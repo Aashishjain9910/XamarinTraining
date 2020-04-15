@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamTraining.Views.WelcomeToListView">
+    <ContentPage.Content>
+        <ListView x:Name="testingListView"  ItemSelected="testingListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <StackLayout Orientation="Horizontal" BackgroundColor="#d8dadb"  Margin="0">
+                            <Image Source="{Binding WeatherImage}" />
+                            <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="StartAndExpand" >
+                                <Label Text="{Binding Place}" FontSize="Medium" TextColor="Black"/>
+                                <Label Text="{Binding Weather}" FontSize="Small" TextColor="Gray"/>
+                            </StackLayout>
+                            <Label Text="{Binding Temperature}" FontSize="Large" TextColor="Black"/>
+                            <Label Text=">" FontSize="Medium" TextColor="Black"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

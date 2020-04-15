@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamTraining.Views.AboutUsPage">
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout Padding="5,5,5,5">
+                <Frame HasShadow="True" BackgroundColor="Red">
+                    <Label Text="About Us" FontSize="Large"  TextColor="Black" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                </Frame>
+
+
+                <Label Text="'Our mission is to build new systems," VerticalOptions="Center" 
+                HorizontalOptions="Center" FontSize="Default" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                <Label Text="resolve technical problems by partnering" VerticalOptions="Center" 
+                HorizontalOptions="Center" FontSize="Default" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                <Label Text="with our global clientele to expand their businesses.'" VerticalOptions="Center"
+                HorizontalOptions="Center" FontSize="Default" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+
+                <Label Text="Enterprise grade technical solutions to shape your ideas and bring them to life" 
+                   FontSize="Small" FontAttributes="Italic" HorizontalOptions="Center" TextColor="DarkGray"
+                       HorizontalTextAlignment="Center"/>
+
+
+                <Label Text="&#x0a; About Successive" FontSize="Large" TextColor="Black" HorizontalTextAlignment="Start" FontAttributes="Bold" TextDecorations="Underline"/>
+                <Label Text="Successive delivers targeted domain solutions and comprehensive services, from strategy and business consulting to technology and operations, using off-shore resources and global project management tools, methods and standards. Successive makes technology more intelligent by embedding it with processes, data insights, and analytics to its solutions and services." HorizontalOptions="Fill" HorizontalTextAlignment="Start"/>
+                <Label Text="With more than a decade of domain expertise, Successive is one of the leading technology services providers for various industry segments including the government and public sector. Today Successive is a fast-growing young leader in business process management and technology services, which leverages the power of intelligent processes, in-depth analytics and innovative technology to help its clients drive efficiency across their enterprise." HorizontalOptions="Fill" HorizontalTextAlignment="Start"/>
+
+
+                <Label Text="&#x0a;Fulfilling Tech Needs for Business." FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                <StackLayout>
+                    <ScrollView Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" Padding="0" Margin="0" >
+                            <Button Text="Requirement Analysis" CommandParameter="1" BackgroundColor="BlanchedAlmond" Clicked="Button_Clicked"/>
+                            <Button Text="UI/UX Studio" CommandParameter="2" BackgroundColor="BlanchedAlmond"
+                              Clicked="Button_Clicked" />
+                            <Button Text="Next Gen Development" CommandParameter="3" BackgroundColor="BlanchedAlmond" Clicked="Button_Clicked" />
+                            <Button Text="Quality Analysis" CommandParameter="4" BackgroundColor="BlanchedAlmond" Clicked="Button_Clicked" />
+                            <Button Text="Deployment and Support" CommandParameter="5" BackgroundColor="BlanchedAlmond" Clicked="Button_Clicked"/>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout>
+                        <ContentView x:Name="aboutUsContentView"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

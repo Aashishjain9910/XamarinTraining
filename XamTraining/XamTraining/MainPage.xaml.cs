@@ -17,6 +17,7 @@ namespace XamTraining
         public MainPage()
         {
             InitializeComponent();
+
         }
 
         bool isValid;

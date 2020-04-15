@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamTraining.Views.RequirementAnalysisContentView">
+  <ContentView.Content>
+      <StackLayout>
+            <Label Text="Requirement Analysis"  FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+            <Image Source="RequirementAnalysis.png" />
+            <Label Text="A team endeavor, we facilitate seamless collaboration with you and your internal teams to understand the organizational strategy, requirements and the goals of all stakeholders to drive the measurements for success. This helps us in understanding your business operations quickly which allows you to scale your product faster." FontSize="Medium" TextColor="DarkGray" />
+          
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

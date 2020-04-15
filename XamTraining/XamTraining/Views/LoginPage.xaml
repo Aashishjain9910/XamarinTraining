@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="XamTraining.Views.SigninView">
+             x:Class="XamTraining.Views.LoginPage">
     <ContentPage.Content>
         <AbsoluteLayout BackgroundColor="#b3f2dd">
 

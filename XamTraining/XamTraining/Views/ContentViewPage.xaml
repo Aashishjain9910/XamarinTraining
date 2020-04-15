@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamTraining.Views.ContentViewPage">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HeightRequest="40" WidthRequest="30" Margin="5">
+                <Button Text="one" BackgroundColor="Yellow" Clicked="Button_Clicked"></Button>
+                <Button Text="two" BackgroundColor="Red" Clicked="Button_Clicked_1"></Button>
+                <Button Text="three" BackgroundColor="BlanchedAlmond" Clicked="Button_Clicked_2"></Button>
+                <Button Text="four" BackgroundColor="Blue" Clicked="Button_Clicked_3"></Button>
+            </StackLayout>
+            <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                <Label x:Name="frame1" BackgroundColor="Gray">Hi, this is the page one of tab page from content view</Label>
+
+                <Label x:Name="frame2" BackgroundColor="Red">Hi, this is the page two of tab page from content view</Label>
+
+                <Label x:Name="frame3" BackgroundColor="Orange">Hi, this is the page three of tab page from content view</Label>
+
+                <Label x:Name="frame4" BackgroundColor="Yellow">Hi, this is the page four of tab page from content view</Label>
+
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

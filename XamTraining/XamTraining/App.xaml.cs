@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamTraining.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace XamTraining
 {
@@ -11,17 +14,20 @@ namespace XamTraining
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new SigninView());
+            MainPage = new NavigationPage( new HomePage());
         }
 
         async protected override void OnStart()
         {
-            await MainPage.DisplayAlert("Alert", "This is the OnStart Alert", "OK");
+            AppCenter.Start("android=fd8e2417-b900-462b-801f-be16be7ab7f7;",
+                  typeof(Analytics), typeof(Crashes));
+ 
+            await MainPage.DisplayAlert(" ", "      Welcome to the Home Page", "Continue");
         }
 
         async protected override void OnSleep()
         {
-            await MainPage.DisplayAlert("Alert", "This is the OnSleep Alert", "OK");
+            await MainPage.DisplayAlert("Alert", "This was the OnSleep Alert", "OK");
         }
 
         async protected override void OnResume()

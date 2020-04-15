@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:XamTraining.Views"
+                  x:Class="XamTraining.Views.HomePage" NavigationPage.HasNavigationBar="False" >
+
+    <MasterDetailPage.Master >
+        <ContentPage BackgroundColor="Black" Title="Master">
+            <ContentPage.Content>
+                <ScrollView>
+                    <StackLayout>
+                        <Button Text="HomePage" TextColor="White"  Padding="5" CommandParameter="1" BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
+                       
+                        <Button Text="Login" TextColor="White" Padding="5" CommandParameter="2" BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
+                        
+                        <Button Text="About Us"  TextColor="White"  Padding="5" CommandParameter="3"  BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
+                       
+                        <Button Text="Services"  TextColor="White"  CommandParameter="4"  Padding="5" BackgroundColor="Black"  Margin="5"  Clicked="Button_Clicked"/>
+                        
+                        <Button Text="Portfolio" TextColor="White"  CommandParameter="5" Padding="5"  BackgroundColor="Black"  Margin="5"   Clicked="Button_Clicked"/>
+                        
+                        <Button Text="Team Culture" TextColor="White"  CommandParameter="6" Padding="5"  BackgroundColor="Black"  Margin="5"   Clicked="Button_Clicked"/>
+                        
+                        <Button Text="Blogs" TextColor="White"  Padding="5"  CommandParameter="7" BackgroundColor="Black"   Margin="5" Clicked="Button_Clicked"/>
+                        
+                        <Button Text="Careers"  TextColor="White" Padding="5"  CommandParameter="8" BackgroundColor="Black"  Margin="5"  Clicked="Button_Clicked" />
+                        
+                        <Button Text="Contact Us" TextColor="White"  Padding="5" CommandParameter="9"  BackgroundColor="Black" Margin="5"  Clicked="Button_Clicked" />
+                    </StackLayout>
+                </ScrollView>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:WelcomeTabbedPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

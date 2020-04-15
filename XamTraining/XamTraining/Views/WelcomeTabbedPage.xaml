@@ -2,31 +2,31 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:local="clr-namespace:XamTraining.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XamTraining.Views.WelcomeTabbedPage">
-    <ContentPage Title="Tab 1">
+    <ContentPage IconImageSource="home.png">
         <StackLayout>
             <Label Text="This is the First Tab"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
-            <BoxView Color="Green" Margin="20" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
-    <ContentPage Title="Tab 2">
+    <ContentPage IconImageSource="profile.png">
         <StackLayout>
             <Label Text="This is the Second Tab" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5"  />
-            <BoxView Color="Blue" Margin="20" VerticalOptions="FillAndExpand" />
+            <BoxView Color="Blue" Margin="40" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
-    <ContentPage Title="Tab 3">
+    <ContentPage IconImageSource="people.png">
         <StackLayout>
             <Label Text="This is the Third Tab"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
-            <BoxView Color="Red" Margin="20" VerticalOptions="FillAndExpand" />
+            <BoxView Color="Red" Margin="40" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
-    <ContentPage Title="Tab 4">
+    <ContentPage IconImageSource="building.png">
         <StackLayout>
             <Label Text="This is the Fourth Tab" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5"  />
-            <BoxView Color="Yellow" Margin="20" VerticalOptions="FillAndExpand" />
+            <BoxView Color="Yellow" Margin="40" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage>
     

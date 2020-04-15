@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace XamTraining.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WelcomeTemplatedPage : ContentPage
+    public partial class NextGenContentView : ContentView
     {
-        public WelcomeTemplatedPage()
+        public NextGenContentView()
         {
             InitializeComponent();
         }

@@ -12,16 +12,16 @@ using XamTraining.Models;
 namespace XamTraining.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SigninView : ContentPage
+    public partial class LoginPage : ContentPage
     {
 
-        SigninModel signinModel = new SigninModel();
-        public SigninView()
+        LoginModel loginModel = new LoginModel();
+        public LoginPage()
         {
 
             InitializeComponent();
-            signinModel.Show += Model_Show;
-            BindingContext = signinModel;
+            loginModel.Show += Model_Show;
+            BindingContext = loginModel;
         }
 
         private void Model_Show(object sender, EventArgs e)

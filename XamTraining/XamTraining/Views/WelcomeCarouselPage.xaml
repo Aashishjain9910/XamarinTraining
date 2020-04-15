@@ -6,27 +6,25 @@
              mc:Ignorable="d"
              x:Class="XamTraining.Views.WelcomeCarouselPage">
     <ContentPage>
-        <StackLayout>
-            <Label Text="This is a First CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
-            <BoxView Color="Red" Margin="40" VerticalOptions="FillAndExpand" />
+        <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
+            <Label Text="This is a First CarouselPage, you can swipe left and right to browse through additional pages." FontSize="Large" Margin="5" />
         </StackLayout>
     </ContentPage>
     <ContentPage>
-        <StackLayout>
-            <Label Text="This is a Second CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
-            <BoxView Color="Blue" Margin="40" VerticalOptions="FillAndExpand" />
+        <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
+            <Label Text="This is a Second CarouselPage, you can swipe left and right to browse through additional pages." FontSize="Large" Margin="5" />
+          
         </StackLayout>
     </ContentPage>
     <ContentPage>
-        <StackLayout>
-            <Label Text="This is a Third CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
-            <BoxView Color="Yellow" Margin="40" VerticalOptions="FillAndExpand" />
+        <StackLayout  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
+            <Label Text="This is a Third CarouselPage, you can swipe left and right to browse through additional pages." FontSize="Large" Margin="5" />
+          
         </StackLayout>
     </ContentPage>
     <ContentPage>
-        <StackLayout>
-            <Label Text="This is a Fourth CarouselPage, you can swipe left and right to browse through additional pages." Margin="5" />
-            <BoxView Color="Green" Margin="40" VerticalOptions="FillAndExpand" />
+        <StackLayout HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
+            <Label Text="This is a Fourth CarouselPage, you can swipe left and right to browse through additional pages." FontSize="Large" Margin="5" />
         </StackLayout>
     </ContentPage>
 </CarouselPage>

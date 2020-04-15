@@ -9,11 +9,11 @@ using XamTraining.Views;
 
 namespace XamTraining.Models
 {
-    public class SigninModel : INotifyPropertyChanged
+    public class LoginModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler Show;
-        public SigninModel()
+        public LoginModel()
         {
 
         }
@@ -67,7 +67,7 @@ namespace XamTraining.Models
                 else
                 {
                     
-                    App.Current.MainPage.Navigation.PushAsync(new WelcomeMasterDetailPage());
+                    App.Current.MainPage.Navigation.PushAsync(new HomePage());
 
                 }
             }

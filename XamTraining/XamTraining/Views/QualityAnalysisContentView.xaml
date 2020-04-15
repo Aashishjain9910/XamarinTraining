@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamTraining.Views.QualityAnalysisContentView">
+  <ContentView.Content>
+      <StackLayout>
+            <Label Text="Quality Analysis"  FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+            <Image Source="QualityAnalysis.png" />
+            <Label Text="The Quality Analysts team is more than just the people in it, it's also the attitude of 'test to break', detail orientation, collaborative efforts and suggesting ingenious advancements. Our AGILE process facilitates continuous Functional Testing which involves the testers with a project from the initial concept to the end." FontSize="Medium" TextColor="DarkGray" />
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>
