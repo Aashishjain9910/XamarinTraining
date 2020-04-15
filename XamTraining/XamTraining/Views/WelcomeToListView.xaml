@@ -6,22 +6,32 @@
              mc:Ignorable="d"
              x:Class="XamTraining.Views.WelcomeToListView">
     <ContentPage.Content>
-        <ListView x:Name="testingListView"  ItemSelected="testingListView_ItemSelected">
+        <ScrollView>
+            <StackLayout x:Name="bind" Spacing="50">
+                <!--<ListView x:Name="testingListView"  ItemSelected="testingListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell >
-                        <StackLayout Orientation="Horizontal" BackgroundColor="#d8dadb"  Margin="0">
-                            <Image Source="{Binding WeatherImage}" />
-                            <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="StartAndExpand" >
-                                <Label Text="{Binding Place}" FontSize="Medium" TextColor="Black"/>
-                                <Label Text="{Binding Weather}" FontSize="Small" TextColor="Gray"/>
+                    <ViewCell>-->
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame >
+                            <StackLayout Orientation="Horizontal" BackgroundColor="#d8dadb"  Margin="0">
+                                <Image Source="{Binding WeatherImage}" />
+                                <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="StartAndExpand" >
+                                    <Label Text="{Binding Place}" FontSize="Medium" TextColor="Black"/>
+                                    <Label Text="{Binding Weather}" FontSize="Small" TextColor="Gray"/>
+                                </StackLayout>
+                                <Label Text="{Binding Temperature}" FontSize="Large" TextColor="Black"/>
+                                <Label Text=">" FontSize="Medium" TextColor="Black"/>
                             </StackLayout>
-                            <Label Text="{Binding Temperature}" FontSize="Large" TextColor="Black"/>
-                            <Label Text=">" FontSize="Medium" TextColor="Black"/>
-                        </StackLayout>
-                    </ViewCell>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+                <!--</ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

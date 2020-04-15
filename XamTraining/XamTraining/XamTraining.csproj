@@ -34,6 +34,9 @@
     <Compile Update="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewRegistration.xaml.cs">
+      <DependentUpon>NewRegistration.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\WelcomeTabbedPage.xaml.cs">
       <DependentUpon>WelcomeTabbedPage.xaml</DependentUpon>
     </Compile>
@@ -43,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AboutUsPage.xaml">
+    <EmbeddedResource Update="Views\About\AboutUsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\BlogsCollectionView.xaml">
@@ -52,10 +55,13 @@
     <EmbeddedResource Update="Views\ContactUsFlexLayout.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DeploySupportContentView.xaml">
+    <EmbeddedResource Update="Views\About\DeploySupportContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NextGenContentView.xaml">
+    <EmbeddedResource Update="Views\About\NextGenContentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewRegistration.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Page2.xaml">
@@ -64,13 +70,13 @@
     <EmbeddedResource Update="Views\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\QualityAnalysisContentView.xaml">
+    <EmbeddedResource Update="Views\About\QualityAnalysisContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RequirementAnalysisContentView.xaml">
+    <EmbeddedResource Update="Views\About\RequirementAnalysisContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\UIUXStudioContentView.xaml">
+    <EmbeddedResource Update="Views\About\UIUXStudioContentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WelcomeCarouselPage.xaml">

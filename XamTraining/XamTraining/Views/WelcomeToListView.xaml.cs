@@ -40,7 +40,8 @@ namespace XamTraining.Views
                     Place="Sydney", Temperature="32 C",Weather="Sunny", WeatherImage="sunny.png"
                 }
             };
-            testingListView.ItemsSource = tempList;
+            //testingListView.ItemsSource = tempList;
+            BindableLayout.SetItemsSource(bind,tempList);
         }
 
 

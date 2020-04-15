@@ -56,6 +56,7 @@ namespace XamTraining.Views
                     break;
                 
                 case 9:
+                    Detail = new NavigationPage(new NewRegistration());
                     break;
 
             }

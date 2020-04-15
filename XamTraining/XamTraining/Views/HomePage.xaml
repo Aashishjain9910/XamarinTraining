@@ -10,9 +10,9 @@
                 <ScrollView>
                     <StackLayout>
                         <Button Text="HomePage" TextColor="White"  Padding="5" CommandParameter="1" BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
-                       
+
                         <Button Text="Login" TextColor="White" Padding="5" CommandParameter="2" BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
-                        
+
                         <Button Text="About Us"  TextColor="White"  Padding="5" CommandParameter="3"  BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
                        
                         <Button Text="Services"  TextColor="White"  CommandParameter="4"  Padding="5" BackgroundColor="Black"  Margin="5"  Clicked="Button_Clicked"/>
