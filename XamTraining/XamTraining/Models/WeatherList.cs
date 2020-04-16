@@ -26,5 +26,22 @@ namespace XamTraining.Models
             get;
             set;
         }
+        public string AddPlace
+        {
+            get;
+            set;
+        }
+        public string AddTemperature
+        {
+            get;
+            set;
+        }
+        public string AddWeather
+        {
+            get;
+            set;
+        }
+
+
     }
 }

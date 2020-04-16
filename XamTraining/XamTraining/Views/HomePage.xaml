@@ -2,13 +2,16 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:local="clr-namespace:XamTraining.Views"
-                  x:Class="XamTraining.Views.HomePage" NavigationPage.HasNavigationBar="False" >
+                  x:Class="XamTraining.Views.HomePage" NavigationPage.HasNavigationBar="False" Title="Homepage" >
 
     <MasterDetailPage.Master >
         <ContentPage BackgroundColor="Black" Title="Master">
             <ContentPage.Content>
                 <ScrollView>
                     <StackLayout>
+                        <Image Source="SuccessiveLogo.png" Margin="5" BackgroundColor="Black" HorizontalOptions="Center" />
+                        
+                        <BoxView WidthRequest="1" HeightRequest="1" BackgroundColor="Black" Color="White" HorizontalOptions="FillAndExpand"/>
                         <Button Text="HomePage" TextColor="White"  Padding="5" CommandParameter="1" BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
 
                         <Button Text="Login" TextColor="White" Padding="5" CommandParameter="2" BackgroundColor="Black"  Margin="5" Clicked="Button_Clicked"/>
@@ -36,6 +39,9 @@
             <x:Arguments>
                 <local:WelcomeTabbedPage/>
             </x:Arguments>
+            <NavigationPage.TitleView>
+                <Label Text="Homepage"/>
+            </NavigationPage.TitleView>
         </NavigationPage>
     </MasterDetailPage.Detail>
 

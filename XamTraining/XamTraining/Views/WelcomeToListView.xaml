@@ -3,17 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             mc:Ignorable="d" NavigationPage.TitleIconImageSource="SuccessiveLogo.png"
              x:Class="XamTraining.Views.WelcomeToListView">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="bind" Spacing="50">
+        <StackLayout>
+
+            <StackLayout x:Name="bind" BackgroundColor="Black" Spacing="10">
                 <!--<ListView x:Name="testingListView"  ItemSelected="testingListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>-->
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
+
+
+                <BindableLayout.ItemTemplate >
+
+                    <DataTemplate x:Name="testingList">
                         <Frame >
                             <StackLayout Orientation="Horizontal" BackgroundColor="#d8dadb"  Margin="0">
                                 <Image Source="{Binding WeatherImage}" />
@@ -27,10 +32,22 @@
                         </Frame>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
+
                 <!--</ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>-->
+            </StackLayout>
+                <StackLayout BackgroundColor="Red">
+
+                    <Label Text="Add Weather details of your Area." TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start"/>
+                    <Entry x:Name="adPlace" Text="{Binding AddPlace}" Margin="0" Placeholder="Place"/>
+                    <Entry x:Name="adWeather" Text="{Binding AddWeather}" Margin="0" Placeholder="Weather"/>
+                    <Entry x:Name="adTemperature" Text="{Binding AddTemperature}" Margin="0" Placeholder="Temperature"/>
+                    <Button Text="Add Details" TextColor="White" Clicked="AddWeatherDetails" />
+                    <Button Text="Remove Details" TextColor="White" Clicked="RemoveWeatherDetails" />
+                </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -22,7 +22,7 @@ namespace XamTraining
             AppCenter.Start("android=fd8e2417-b900-462b-801f-be16be7ab7f7;",
                   typeof(Analytics), typeof(Crashes));
  
-            await MainPage.DisplayAlert(" ", "      Welcome to the Home Page", "Continue");
+            await MainPage.DisplayAlert("           Successive Technologies", "                        Welcomes You", "Continue");
         }
 
         async protected override void OnSleep()

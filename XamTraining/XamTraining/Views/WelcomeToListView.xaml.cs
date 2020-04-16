@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,12 @@ namespace XamTraining.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WelcomeToListView : ContentPage
     {
+        ObservableCollection<WeatherList> tempList ;
+        
         public WelcomeToListView()
         {
             InitializeComponent();
-
-            List<WeatherList> tempList = new List<WeatherList>
+            tempList= new ObservableCollection<WeatherList>
             {
                 new WeatherList
                 {
@@ -48,6 +50,37 @@ namespace XamTraining.Views
         private void testingListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             DisplayAlert("Message", "Item is selected", "OK");
+        }
+
+        private void AddWeatherDetails(object sender, EventArgs e)
+        {
+            var addPlace = adPlace.Text;
+            var addWeather = adWeather.Text;
+            var addTemperature = adTemperature.Text;
+
+            tempList.Add(new WeatherList { Place=addPlace,Weather= addWeather , Temperature = addTemperature });
+        }
+
+        private void RemoveWeatherDetails(object sender, EventArgs e)
+        {
+                var DelPlace = adPlace.Text;
+                var DelWeather = adWeather.Text;
+                var DelTemp = adTemperature.Text;
+
+                int i = 0, deleteIndex = -1;
+
+                foreach (var item in tempList)
+                {
+                    if (item.Place == DelPlace)
+                    {
+                        deleteIndex = i;
+                    }
+
+                    i++;
+                }
+
+                tempList.RemoveAt(deleteIndex);
+        
         }
     }
 }

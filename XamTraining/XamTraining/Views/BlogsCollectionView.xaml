@@ -3,13 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"  Title="Blogs"
+             mc:Ignorable="d"  NavigationPage.TitleIconImageSource="SuccessiveLogo.png"
              x:Class="XamTraining.Views.BlogsCollectionView">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#f6f5f5">
-            <NavigationPage.TitleView>
-                <Label Text="Blogs" TextColor="Black" FontSize="Medium"/>
-            </NavigationPage.TitleView>
+            <Label Text="Blogs" TextColor="Black" FontSize="Title"  HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold" Margin="5" Padding="5"/>
+            <BoxView WidthRequest="1" HeightRequest="1" BackgroundColor="White" Color="Black" HorizontalOptions="FillAndExpand"/>
             <CollectionView x:Name="collectionList" Margin="10">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
@@ -29,7 +28,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            
+            
             <Button Text="Save" TextColor="White" BackgroundColor="Red" Clicked="Button_Clicked"/>
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
