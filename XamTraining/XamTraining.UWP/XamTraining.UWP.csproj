@@ -92,6 +92,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntryCustomRenderers.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -103,6 +104,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="tri.jpg" />
     <Content Include="ApacheCordova.jpeg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -151,6 +153,12 @@
     <Content Include="nodejsProgramme.jpg" />
     <Content Include="people.png" />
     <Content Include="profile.png" />
+    <Content Include="profile1.jpg" />
+    <Content Include="profile3.jpg" />
+    <Content Include="profile4.jpg" />
+    <Content Include="profile7.jpg" />
+    <Content Include="profile8.jpg" />
+    <Content Include="profile9.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="QualityAnalysis.png" />
     <Content Include="QueuingtaskwithRedis.jpeg" />

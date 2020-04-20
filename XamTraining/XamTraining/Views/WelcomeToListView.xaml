@@ -7,39 +7,41 @@
              x:Class="XamTraining.Views.WelcomeToListView">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
+            <StackLayout>
+                <StackLayout x:Name="bind" BackgroundColor="Black">
+                    <ListView x:Name="testingListView" ItemSelected="testingListView_ItemSelected" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.ContextActions>
 
-            <StackLayout x:Name="bind" BackgroundColor="Black" Spacing="10">
-                <!--<ListView x:Name="testingListView"  ItemSelected="testingListView_ItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>-->
+                                        <MenuItem Text="Delete" IsDestructive="True"  Clicked="MenuItem_Delete" CommandParameter="{Binding}"/>
+                                        <MenuItem Text="Edit" Clicked="MenuItem_Edit" CommandParameter="{Binding}" /> 
+                                    </ViewCell.ContextActions>
+                                    <!--<BindableLayout.ItemTemplate >
+                    <DataTemplate x:Name="testingList">-->
+                                    <Frame  Padding="5" Margin=" 5">
+                                        <StackLayout x:Name="stackMainCell" Orientation="Horizontal" BackgroundColor="#d8dadb"  Margin="0">
+                                            <Image Source="{Binding WeatherImage}" />
+                                            <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="StartAndExpand">
+                                                <Label Text="{Binding Place}" FontSize="Medium" TextColor="Black"/>
+                                                
+                                                <Label Text="{Binding Weather}" FontSize="Small" TextColor="Gray"/>
+                                            </StackLayout>
+                                            <Label Text="{Binding Temperature}" FontSize="Large" TextColor="Black"/>
+                                            <Label Text=">" FontSize="Medium" TextColor="Black"/>
+                                        </StackLayout>
+                                    </Frame>
+                                    <!--</DataTemplate>
+                </BindableLayout.ItemTemplate>-->
 
 
-                <BindableLayout.ItemTemplate >
-
-                    <DataTemplate x:Name="testingList">
-                        <Frame >
-                            <StackLayout Orientation="Horizontal" BackgroundColor="#d8dadb"  Margin="0">
-                                <Image Source="{Binding WeatherImage}" />
-                                <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="StartAndExpand" >
-                                    <Label Text="{Binding Place}" FontSize="Medium" TextColor="Black"/>
-                                    <Label Text="{Binding Weather}" FontSize="Small" TextColor="Gray"/>
-                                </StackLayout>
-                                <Label Text="{Binding Temperature}" FontSize="Large" TextColor="Black"/>
-                                <Label Text=">" FontSize="Medium" TextColor="Black"/>
-                            </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-
-                <!--</ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
-            </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
                 <StackLayout BackgroundColor="Red">
-
                     <Label Text="Add Weather details of your Area." TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Start"/>
                     <Entry x:Name="adPlace" Text="{Binding AddPlace}" Margin="0" Placeholder="Place"/>
                     <Entry x:Name="adWeather" Text="{Binding AddWeather}" Margin="0" Placeholder="Weather"/>
@@ -47,7 +49,6 @@
                     <Button Text="Add Details" TextColor="White" Clicked="AddWeatherDetails" />
                     <Button Text="Remove Details" TextColor="White" Clicked="RemoveWeatherDetails" />
                 </StackLayout>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

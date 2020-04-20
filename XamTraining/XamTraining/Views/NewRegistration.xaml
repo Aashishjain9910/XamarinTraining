@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:XamTraining"
              mc:Ignorable="d" Title="New Registration"
              x:Class="XamTraining.Views.NewRegistration">
     <ContentPage.Content>
@@ -17,22 +17,22 @@
                 </Frame>
 
                 <Label Text="Fullname" TextColor="White" HorizontalOptions="Start" FontSize="Medium"/>
-                <Entry x:Name="Fullname" Text="{Binding FullName}" Margin="0" Placeholder="Enter your name" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"    />
+                <Controls:CustomEntry x:Name="Fullname" Text="{Binding FullName}" Margin="0" Placeholder="Enter your name" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"    />
 
                 <Label Text="Email Id" TextColor="White" HorizontalOptions="Start" FontSize="Medium"/>
-                <Entry x:Name="Email" Text="{Binding EmailId}" Margin="0" Placeholder="Enter your email" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"   />
+                <Controls:CustomEntry x:Name="Email" Text="{Binding EmailId}" Margin="0" Placeholder="Enter your email" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"   />
 
                 <Label Text="Date of Birth" TextColor="White" HorizontalOptions="Start" FontSize="Medium"/>
                 <DatePicker x:Name="Dob" Date="{Binding DOB}"  BackgroundColor="WhiteSmoke" MaximumDate="12/31/1999" />
 
                 <Label Text="Department" TextColor="White" HorizontalOptions="Start" FontSize="Medium"/>
-                <Entry x:Name="Department" Text="{Binding Departmnt}" Margin="0" Placeholder="Enter your department" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"    />
+                <Controls:CustomEntry x:Name="Department" Text="{Binding Departmnt}" Margin="0" Placeholder="Enter your department" PlaceholderColor="Black" BackgroundColor="WhiteSmoke"    />
 
                 <Label Text="Password" TextColor="White" HorizontalOptions="Start" FontSize="Medium"/>
-                <Entry x:Name="pswd" Text="{Binding Password}" Margin="0"  IsPassword="True" Placeholder="Password"  BackgroundColor="WhiteSmoke" PlaceholderColor="Black" MaxLength="8" />
+                <Controls:CustomEntry x:Name="pswd" Text="{Binding Password}" Margin="0"  IsPassword="True" Placeholder="Password"  BackgroundColor="WhiteSmoke" PlaceholderColor="Black" MaxLength="8" />
 
                 <Label Text="Confirm Password" TextColor="White" HorizontalOptions="Start" FontSize="Medium"/>
-                <Entry x:Name="Cpass" Text="{Binding CnfrmPassword}" Margin="0"  IsPassword="True" Placeholder="Confirm Password"  BackgroundColor="WhiteSmoke" PlaceholderColor="Black" MaxLength="8" />
+                <Controls:CustomEntry x:Name="Cpass" Text="{Binding CnfrmPassword}" Margin="0"  IsPassword="True" Placeholder="Confirm Password"  BackgroundColor="WhiteSmoke" PlaceholderColor="Black" MaxLength="8" />
 
                 <Frame Padding="0" HasShadow="True">
                     <Button Text="Register" Command="{Binding SubmitCommand}" x:Name="Signin" BackgroundColor="#19d6d2" Padding="0" FontSize="Medium" TextColor="White" BorderWidth="2" />

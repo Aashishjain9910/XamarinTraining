@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Title="Activity Log"
+             x:Class="XamTraining.Views.AlphabeticalNameList">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <NavigationPage.TitleView>
+                    <Label Text="Activity Log"/>
+                </NavigationPage.TitleView>
+                <ListView x:Name="alphabeticalListView" IsGroupingEnabled="True" HasUnevenRows="True" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="2" Padding="15,5,0,0" Orientation="Vertical" >
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame CornerRadius="30" Padding="0" Margin="0">
+                                            <Image Source="{Binding ProfileImage}" HeightRequest="60"  WidthRequest="60"  />
+                                        </Frame>
+                                        <Label Text="{Binding PersonName}" VerticalTextAlignment="Center" FontSize="Large" TextColor="Black"/>
+                                        <Label Text=">" HorizontalOptions="EndAndExpand" Margin="0,0,10,0" VerticalTextAlignment="Center"  FontSize="Medium" TextColor="Gray"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="65,0,0,0" Orientation="Vertical">
+                                        <Label FontSize="Small" FontAttributes="Bold" >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Status changed from " TextColor="Black"/>
+                                                    <Span Text="{Binding BeforeProgress}" TextColor="{Binding beforeProgressColor}"/>
+                                                    <Span Text=" to " TextColor="Black"/>
+                                                    <Span Text="{Binding AfterProgress}" TextColor="{Binding afterProgressColor}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="{Binding WorkOrderId}" FontSize="Small" TextColor="Gray"/>
+                                    </StackLayout>
+                                    <BoxView WidthRequest="1" Margin="0,5,10,0" HeightRequest="1" Color="Black"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame HasShadow="True" BackgroundColor="LightGray" Margin="0" Padding="0">
+                                    <Label Text="{Binding Title}" Margin="30,0,0,0" TextColor="Black" VerticalTextAlignment="Center"/>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                </ListView>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

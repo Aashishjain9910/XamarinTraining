@@ -42,8 +42,8 @@ namespace XamTraining.Views
                     Place="Sydney", Temperature="32 C",Weather="Sunny", WeatherImage="sunny.png"
                 }
             };
-            //testingListView.ItemsSource = tempList;
-            BindableLayout.SetItemsSource(bind,tempList);
+            testingListView.ItemsSource = tempList;
+           // BindableLayout.SetItemsSource(bind,tempList);
         }
 
 
@@ -81,6 +81,23 @@ namespace XamTraining.Views
 
                 tempList.RemoveAt(deleteIndex);
         
+        }
+
+        private void MenuItem_Delete(object sender, EventArgs e)
+        {
+            var deleteItem = (sender as MenuItem).CommandParameter as WeatherList;
+            tempList.Remove(deleteItem);
+        }
+
+        private void MenuItem_Edit(object sender, EventArgs e)
+        {
+            var editItem = ((MenuItem)sender);
+            DisplayAlert("Edit", editItem.CommandParameter.ToString(), "Ok");
+        }
+
+        private void testingListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            
         }
     }
 }

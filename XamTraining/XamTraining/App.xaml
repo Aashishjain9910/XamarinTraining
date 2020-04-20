@@ -6,6 +6,9 @@
              mc:Ignorable="d" NavigationPage.TitleIconImageSource="SuccessiveLogo.png"
              x:Class="XamTraining.App">
     <Application.Resources>
-
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="White"></Setter>
+            <Setter Property="BarTextColor" Value="Black"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
