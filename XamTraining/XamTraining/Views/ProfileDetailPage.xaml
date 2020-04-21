@@ -61,7 +61,7 @@
             </StackLayout>
             </ScrollView>
 
-            <Button Text="Edit Notes" TextColor="White" Margin="30,0,30,0" BackgroundColor="#bc2729" CornerRadius="30"/>
+            <Button Text="EdiT noTes" TextColor="White" Margin="30,0,30,0" BackgroundColor="#bc2729" CornerRadius="30"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
