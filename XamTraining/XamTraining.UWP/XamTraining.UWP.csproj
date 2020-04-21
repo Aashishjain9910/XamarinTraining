@@ -104,6 +104,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="document.png" />
+    <Content Include="email.png" />
+    <Content Include="ID.png" />
+    <Content Include="location.png" />
+    <Content Include="phone.png" />
     <Content Include="tri.jpg" />
     <Content Include="ApacheCordova.jpeg" />
     <Content Include="Assets\LargeTile.scale-100.png" />
