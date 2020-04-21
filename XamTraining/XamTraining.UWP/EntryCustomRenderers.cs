@@ -21,7 +21,8 @@ namespace XamTraining.UWP
 
             if (Control != null)
             {
-                Control.Background = new SolidColorBrush(Colors.White);
+                Control.BorderBrush.Opacity = 0;
+                Control.Background = new SolidColorBrush(Colors.Red);
             }
         }
     }

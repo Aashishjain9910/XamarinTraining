@@ -14,7 +14,7 @@ namespace XamTraining
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new TestEntryPage());
+            MainPage = new NavigationPage( new ProfileDetailPage());
         }
 
         async protected override void OnStart()

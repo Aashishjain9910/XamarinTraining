@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              x:Class="XamTraining.Views.TestEntryPage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" BackgroundColor="Black">
+        <StackLayout BackgroundColor="Yellow">
             <Label Text="Welcome to Xamarin.Forms!" TextColor="White"/>
             <Controls:CustomEntry Placeholder="Enter something here..." ></Controls:CustomEntry>
 
