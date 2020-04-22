@@ -4,12 +4,51 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundColor="LightGray"
              x:Class="XamTraining.Views.ProfileDetailPage">
+    
+    <!--
+    This is the title bar section of the page
+    -->
     <NavigationPage.TitleView>
         <Label Text="Detail Page" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Center" Margin="0"/>
     </NavigationPage.TitleView>
+   
+    <!--
+    This is the styling section of the page
+    -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="StackLayout" x:Key="StackStyle">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            </Style>
+            
+            <Style TargetType="Label" x:Key="labelDetailStyle">
+                <Setter Property="Margin" Value="40,0,0,14"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            
+            <Style TargetType="Image" x:Key="headingImageStyle">
+                <Setter Property="HeightRequest" Value="25"/>
+                <Setter Property="WidthRequest" Value="25"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="EditButtonStyle">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Margin" Value="30,0,30,0"/>
+                <Setter Property="BackgroundColor" Value="#bc2729"/>
+                <Setter Property="CornerRadius" Value="30"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <!--
+    This is content section of the page
+    -->
     <ContentPage.Content>
-        <StackLayout Margin="5,20,5,5">
+        <StackLayout Margin="0,5,0,0" Padding="5,20,5,5" BackgroundColor="White">
             <ImageButton BackgroundColor="Transparent" IsEnabled="False" CornerRadius="50" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Source="profile1.jpg" Aspect="AspectFill"  HeightRequest="100" WidthRequest="100"/>
             <Label Margin="0,10,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" FontSize="16" >
                 <Label.FormattedText>
@@ -20,48 +59,49 @@
                 </Label.FormattedText>
             </Label>
             <Label/>
+            
             <ScrollView>
                 <StackLayout Margin="20,10,10,0" HorizontalOptions="StartAndExpand" >
-                <StackLayout Margin="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                    <Image Source="profile.png" HeightRequest="25" WidthRequest="25"/>
-                    <Label Margin="10,0,0,0" Text="Account Number" TextColor="Gray" FontSize="20"/>
+                    <StackLayout Margin="0" Style="{StaticResource StackStyle}">
+                        <Image Source="profile.png" Style="{StaticResource headingImageStyle}"/>
+                        <Label Margin="10,0,0,0" Text="Account Number" TextColor="Gray" FontSize="20"/>
+                    </StackLayout>
+                    <Label Text="12345678" Style="{StaticResource labelDetailStyle}"/>
+
+                    <StackLayout Margin="0" Style="{StaticResource StackStyle}">
+                        <Image Source="ID.png" Style="{StaticResource headingImageStyle}"/>
+                        <Label Margin="10,0,0,0" Text="Name" TextColor="Gray" FontSize="20"/>
+                    </StackLayout>
+                    <Label Text="Himanshu Arora" Style="{StaticResource labelDetailStyle}"/>
+
+                    <StackLayout Margin="0" Style="{StaticResource StackStyle}">
+                        <Image Source="document.png" Style="{StaticResource headingImageStyle}"/>
+                        <Label Margin="10,0,0,0" Text="Type" TextColor="Gray" FontSize="20"/>
+                    </StackLayout>
+                    <Label Text="Vendor" Style="{StaticResource labelDetailStyle}"/>
+
+                    <StackLayout Margin="0" Style="{StaticResource StackStyle}">
+                        <Image Source="email.png" Style="{StaticResource headingImageStyle}"/>
+                        <Label Margin="10,0,0,0" Text="Email" TextColor="Gray" FontSize="20"/>
+                    </StackLayout>
+                    <Label Text="Himanshu@gmail.com" Style="{StaticResource labelDetailStyle}"/>
+
+                    <StackLayout Margin="0" Style="{StaticResource StackStyle}">
+                        <Image Source="phone.png" Style="{StaticResource headingImageStyle}"/>
+                        <Label Margin="10,0,0,0" Text="Phone Number" TextColor="Gray" FontSize="20"/>
+                    </StackLayout>
+                    <Label Text="9864732876" Style="{StaticResource labelDetailStyle}"/>
+
+                    <StackLayout Margin="0" Style="{StaticResource StackStyle}">
+                        <Image Source="location.png" Style="{StaticResource headingImageStyle}"/>
+                        <Label Margin="10,0,0,0" Text="Location" TextColor="Gray" FontSize="20"/>
+                    </StackLayout>
+                    <Label Text="E 29 Noida, India" Style="{StaticResource labelDetailStyle}"/>
+                    
                 </StackLayout>
-                    <Label Text="12345678" Margin="40,0,0,14" TextColor="Black" FontSize="20"/>
-                
-                <StackLayout Margin="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                        <Image Source="ID.png" HeightRequest="25" WidthRequest="25"/>
-                    <Label Margin="10,0,0,0" Text="Name" TextColor="Gray" FontSize="20"/>
-                </StackLayout>
-                    <Label Text="Himanshu Arora" Margin="40,0,0,14" TextColor="Black" FontSize="20"/>
-                
-                <StackLayout Margin="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                        <Image Source="document.png" HeightRequest="25" WidthRequest="25"/>
-                    <Label Margin="10,0,0,0" Text="Type" TextColor="Gray" FontSize="20"/>
-                </StackLayout>
-                    <Label Text="Vendor" Margin="40,0,0,14" TextColor="Black" FontSize="20"/>
-                
-                <StackLayout Margin="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                    <Image Source="email.png" HeightRequest="25" WidthRequest="25"/>
-                    <Label Margin="10,0,0,0" Text="Email" TextColor="Gray" FontSize="20"/>
-                </StackLayout>
-                    <Label Text="Himanshu@gmail.com" Margin="40,0,0,14" TextColor="Black" FontSize="20"/>
-                
-                <StackLayout Margin="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                    <Image Source="phone.png" HeightRequest="25" WidthRequest="25"/>
-                    <Label Margin="10,0,0,0" Text="Phone Number" TextColor="Gray" FontSize="20"/>
-                </StackLayout>
-                    <Label Text="9864732876" Margin="40,0,0,14" TextColor="Black" FontSize="20"/>
-                
-                <StackLayout Margin="0" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                    <Image Source="location.png" HeightRequest="25" WidthRequest="25"/>
-                    <Label Margin="10,0,0,0" Text="Location" TextColor="Gray" FontSize="20"/>
-                </StackLayout>
-                    <Label Text="E 29 Noida, India" Margin="40,0,0,14" TextColor="Black" FontSize="20"/>
-                
-            </StackLayout>
             </ScrollView>
 
-            <Button Text="EdiT noTes" TextColor="White" Margin="30,0,30,0" BackgroundColor="#bc2729" CornerRadius="30"/>
+            <Button Text="EdiT noTes" Style="{StaticResource EditButtonStyle}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

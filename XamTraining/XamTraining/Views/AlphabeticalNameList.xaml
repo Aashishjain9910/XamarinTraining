@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <ListView x:Name="alphabeticalListView" IsGroupingEnabled="True" HasUnevenRows="True" >
+                <ListView x:Name="alphabeticalListView" IsGroupingEnabled="True" HasUnevenRows="True" SeparatorColor="Red" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -37,7 +37,7 @@
                                             <Label Text="{Binding WorkOrderId}" FontSize="Small" TextColor="Gray"/>
                                             <Label/>
                                         </StackLayout>
-                                    <BoxView WidthRequest="1" Margin="0,0,0,0" HeightRequest="1" HorizontalOptions="FillAndExpand" Color="LightGray"/>
+                                    <!--<BoxView WidthRequest="1" Margin="0,0,0,0" HeightRequest="1" HorizontalOptions="FillAndExpand" Color="LightGray"/>-->
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                                         <Label Text=">" HorizontalOptions="EndAndExpand" Margin="0,0,10,0" VerticalTextAlignment="Center"  FontSize="Medium" TextColor="Gray"/>
