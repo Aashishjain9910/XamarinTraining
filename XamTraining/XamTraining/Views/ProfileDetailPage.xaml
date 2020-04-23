@@ -11,7 +11,7 @@
     This is the title bar section of the page
     -->
     <NavigationPage.TitleView>
-        <Label Text="Detail Page" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Center" Margin="0"/>
+        <Label Text="Detail Page" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Center" Margin="0" BackgroundColor="Green"/>
     </NavigationPage.TitleView>
    
     <!--

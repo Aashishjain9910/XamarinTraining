@@ -2,13 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Controls="clr-namespace:XamTraining"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XamTraining.Views.TestEntryPage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="Yellow">
             <Label Text="Welcome to Xamarin.Forms!" TextColor="White"/>
-            <Controls:CustomEntry Placeholder="Enter something here..." ></Controls:CustomEntry>
+            <Entry x:Name="entry" Text="{Binding}" Placeholder="Enter something here..." ></Entry>
+            <Button x:Name="btn" Text="check" >
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button"
+                     Binding="{Binding Source={x:Reference entry},
+                                       Path=Text.Length}"
+                     Value="0">
+                        <Setter Property="IsEnabled" Value="False" />
+                        <!-- multiple Setters elements are allowed -->
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
 
         </StackLayout>
     </ContentPage.Content>

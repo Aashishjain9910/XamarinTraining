@@ -20,7 +20,7 @@ namespace XamTraining.Droid.ControlHelpers
             base.OnElementChanged(e);
             if (Control != null)
             {
-                Control.Background = new ColorDrawable(Android.Graphics.Color.Red);
+                Control.Background = new ColorDrawable(Android.Graphics.Color.White);
             }
 
         }
