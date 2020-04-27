@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:XamTraining.Models"
              mc:Ignorable="d"
              BackgroundColor="LightGray"
              x:Class="XamTraining.Views.ProfileDetailPage">
@@ -49,7 +49,11 @@
     -->
     <ContentPage.Content>
         <StackLayout Margin="0,5,0,0" Padding="5,20,5,5" BackgroundColor="White">
-            <ImageButton BackgroundColor="Transparent" IsEnabled="False" CornerRadius="50" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Source="profile1.jpg" Aspect="AspectFill"  HeightRequest="100" WidthRequest="100"/>
+            <Image BackgroundColor="Transparent" IsEnabled="False" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Source="profile1.jpg" Aspect="AspectFill"  HeightRequest="100" WidthRequest="100">
+                <Image.Effects>
+                    <local:RoundEffect />
+                </Image.Effects>
+            </Image>
             <Label Margin="0,10,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" FontSize="16" >
                 <Label.FormattedText>
                     <FormattedString>

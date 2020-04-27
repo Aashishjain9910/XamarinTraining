@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:XamTraining.Models"
              mc:Ignorable="d" Title="Activity Log"
              x:Class="XamTraining.Views.AlphabeticalNameList">
     <NavigationPage.TitleView>
@@ -18,8 +18,12 @@
                                 <StackLayout Spacing="2" Padding="15,5,0,0" Orientation="Horizontal" >
                                     <StackLayout Orientation="Vertical" >
                                         <StackLayout Orientation="Horizontal">
-                                            <Frame CornerRadius="30" Padding="0" Margin="0">
-                                                <Image Source="{Binding ProfileImage}" HeightRequest="60"  WidthRequest="60" Aspect="AspectFill" />
+                                            <Frame Padding="0" Margin="0">
+                                                <Image Source="{Binding ProfileImage}" HeightRequest="60"  WidthRequest="60" Aspect="AspectFill" >
+                                                    <Image.Effects>
+                                                        <local:RoundEffect />
+                                                    </Image.Effects>
+                                                </Image>
                                             </Frame>
                                             <Label Text="{Binding PersonName}" VerticalTextAlignment="Center" FontSize="Large" TextColor="Black"/>
                                         </StackLayout>

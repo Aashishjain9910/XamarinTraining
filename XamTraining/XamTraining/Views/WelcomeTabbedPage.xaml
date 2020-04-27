@@ -8,7 +8,7 @@
              x:Class="XamTraining.Views.WelcomeTabbedPage">
     <ContentPage IconImageSource="home.png">
         <StackLayout>
-            <WebView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="https://successive.tech/"/>
+            
         </StackLayout>
     </ContentPage>
     <ContentPage IconImageSource="profile.png">
