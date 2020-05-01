@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
 [assembly: ResolutionGroupName("Xamarin")]
 [assembly: ExportEffect(typeof(XamTraining.Droid.RoundEffect), nameof(XamTraining.Droid.RoundEffect))]
 namespace XamTraining.Droid
@@ -34,7 +33,6 @@ namespace XamTraining.Droid
                 Console.WriteLine($"Failed to set corner radius: {ex.Message}");
             }
         }
-
         protected override void OnDetached()
         {
             if (effectTarget != null)
@@ -42,6 +40,24 @@ namespace XamTraining.Droid
                 effectTarget.OutlineProvider = originalProvider;
                 effectTarget.ClipToOutline = false;
             }
+        }
+        class CornerRadiusOutlineProvider : ViewOutlineProvider
+        {
+            Element element;
+            public CornerRadiusOutlineProvider(Element formsElement)
+            {
+                element = formsElement;
+            }
+            public override void GetOutline(Android.Views.View view, Outline outline)
+            {
+                float scale = view.Resources.DisplayMetrics.Density;
+                double width = (double)element.GetValue(VisualElement.WidthProperty) * scale;
+                double height = (double)element.GetValue(VisualElement.HeightProperty) * scale;
+                float minDimension = (float)Math.Min(height, width);
+                float radius = minDimension / 2f;
+                Rect rect = new Rect(0, 0, (int)width, (int)height);
+                outline.SetRoundRect(rect, radius);
+            }   
         }
     }
 }

@@ -1,21 +1,17 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics.Drawables;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using XamarinEntry;
+using XamarinEntry.Droid;
 using XamTraining;
-using XamTraining.Droid;
 
-#pragma warning disable CS0612 // Type or member is obsolete
-[assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
-#pragma warning restore CS0612 // Type or member is obsolete
-
-namespace XamTraining.Droid
+[assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomRendererEntry))]
+namespace XamarinEntry.Droid
 {
-    [Obsolete]
-    class CustomEntryRenderer : EntryRenderer
+    public class CustomRendererEntry : EntryRenderer
     {
-        public CustomEntryRenderer(Context context) : base(context)
+        public CustomRendererEntry(Context context) : base(context)
         {
             AutoPackage = false;
         }
@@ -26,9 +22,6 @@ namespace XamTraining.Droid
             {
                 Control.Background = new ColorDrawable(Android.Graphics.Color.Transparent);
             }
-
         }
-
-
     }
 }

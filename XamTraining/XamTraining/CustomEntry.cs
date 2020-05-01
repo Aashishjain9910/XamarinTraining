@@ -7,5 +7,6 @@ namespace XamTraining
 {
     public class CustomEntry:Entry
     {
+
     }
 }

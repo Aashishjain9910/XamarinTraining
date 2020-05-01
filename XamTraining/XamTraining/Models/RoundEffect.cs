@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace XamTraining.Models
 {
-    class RoundEffect: RoutingEffect
+    class RoundEffect : RoutingEffect
     {
         public RoundEffect() : base($"Xamarin.{nameof(RoundEffect)}")
         {
