@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Title="weather list"
+             x:Class="XamTraining.Views.Weather.TodayTemperature">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <Image Source="bgWeather.png" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" Aspect="AspectFill"/>
+            <Frame Padding="10" BackgroundColor="Transparent" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.7*"/>
+                            <RowDefinition Height="1.8*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <StackLayout Grid.Row="0" Grid.Column="0">
+                            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label Text="Sydney" FontSize="24" HorizontalTextAlignment="Center"/>
+                                <Label Text="Sunny" FontSize="16" HorizontalTextAlignment="Center"/>
+                                <Label Text="20°" FontSize="80" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" >
+                                <Label Text="Thursday"  FontSize="23"/>
+                                <Label Text="Today" FontSize="23"/>
+                                <Label Text="23°" HorizontalOptions="EndAndExpand" FontSize="25"/>
+                                <Label Text="12°" HorizontalOptions="End" Margin="8,0,0,0" FontSize="25"/>
+                            </StackLayout>
+                            <BoxView BackgroundColor="Black" WidthRequest="1" HeightRequest="1"/>
+                        </StackLayout>
+
+                        <CollectionView x:Name="currentDayWeatherList" Grid.Row="1" Grid.Column="0"  VerticalOptions="Start" HorizontalScrollBarVisibility="Never" SelectionMode="Single" >
+                            <CollectionView.ItemsLayout>                                <GridItemsLayout Orientation="Horizontal" />                            </CollectionView.ItemsLayout>                            <CollectionView.ItemTemplate>                                <DataTemplate>
+                                    <StackLayout  VerticalOptions="Center" Margin="0,0,13,0" >
+                                        <Label Text="{Binding CurrentDayTime}" HorizontalTextAlignment="Center" FontSize="20"/>
+                                        <Image Source="{Binding WeatherImage}" HorizontalOptions="Center" HeightRequest="30" WidthRequest="30"/>
+                                        <Label Text="{Binding Temperature}" HorizontalTextAlignment="Center" FontSize="20"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <BoxView BackgroundColor="Black" Grid.Row="2" Grid.Column="0" Margin="0,0,0,10" WidthRequest="1" VerticalOptions="Start" HeightRequest="1"/>
+
+
+                        <ListView x:Name="daywiseList" Grid.Row="2" Grid.Column="0" VerticalOptions="Center" VerticalScrollBarVisibility="Never">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Margin="0" VerticalOptions="Center">
+                                            <Label Grid.Column="0" Text="{Binding Day}"  FontSize="23" />
+                                            <Image Grid.Column="1" Source="{Binding WeatherImage}" HeightRequest="30" WidthRequest="30" />
+                                            <Label Grid.Column="2" Text="{Binding MaxTemperature}" HorizontalOptions="End" Margin="0,0,50,0" FontSize="25"/>
+                                            <Label Grid.Column="2" Text="{Binding MinTemperature}" HorizontalOptions="End" FontSize="25" Margin="8,0,0,0" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    <StackLayout HeightRequest="40" Orientation="Horizontal">
+                        <Image Source="document.png" WidthRequest="35" HeightRequest="35"  />
+                        <Label Text="carousel points" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Image Source="menu.png" HorizontalOptions="EndAndExpand" HeightRequest="35" WidthRequest="35"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
