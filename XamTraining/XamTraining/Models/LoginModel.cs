@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamTraining.Views;
+using XamTraining.Views.Weather;
 
 namespace XamTraining.Models
 {
@@ -66,8 +67,13 @@ namespace XamTraining.Models
                 }
                 else
                 {
-                    
-                    App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    if(Email==email && Password == password)
+                    {
+
+                    SessionManager sm = new SessionManager();
+                    sm.setUserLoggedIn();
+                    App.Current.MainPage.Navigation.PushAsync(new TodayTemperature());
+                    }
 
                 }
             }
