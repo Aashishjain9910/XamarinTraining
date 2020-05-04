@@ -9,10 +9,18 @@
     <ContentPage.Content>
 
         <StackLayout BackgroundColor="Red">
-            
-            <cv:FloatingEntry Placeholder="Email" SideImage="icons8user.png" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutBounds=".59, .5, .74, .1"  AbsoluteLayout.LayoutFlags="All" />
+            <Button Text="click me!" BackgroundColor="Green" Clicked="Button_Clicked"/>
+            <Label x:Name="LabelOutput"/>
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Button Text="load" BackgroundColor="Yellow" Clicked="Button_Clicked_1"/>
+                <Button Text="save" BackgroundColor="Orange" Clicked="Button_Clicked_2"/>
+            </StackLayout>
+            <Editor x:Name="CurrentContext"/>
+            <Editor x:Name="loadingText"/>
+
+
         </StackLayout>
-           
-        
+
+
     </ContentPage.Content>
 </ContentPage>

@@ -15,7 +15,7 @@ namespace XamTraining
         {
             InitializeComponent();
 
-            // MainPage = new NavigationPage( new LoginPage());
+             //MainPage = new NavigationPage( new TestPage3());
             SessionManager sm = new SessionManager();
             if (sm.isUserLoggedIn())
             {
@@ -34,7 +34,7 @@ namespace XamTraining
             AppCenter.Start("android=fd8e2417-b900-462b-801f-be16be7ab7f7;",
                   typeof(Analytics), typeof(Crashes));
 
-            await MainPage.DisplayAlert("           Successive Technologies", "                        Welcomes You", "Continue");
+            await MainPage.DisplayAlert("Successive Technologies", "Welcomes You", "Continue");
         }
 
         async protected override void OnSleep()

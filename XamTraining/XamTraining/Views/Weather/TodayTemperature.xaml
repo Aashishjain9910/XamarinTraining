@@ -39,7 +39,11 @@
                         </StackLayout>
 
                         <CollectionView x:Name="currentDayWeatherList" Grid.Row="1" Grid.Column="0"  VerticalOptions="Start" HorizontalScrollBarVisibility="Never" SelectionMode="Single" >
-                            <CollectionView.ItemsLayout>                                <GridItemsLayout Orientation="Horizontal" />                            </CollectionView.ItemsLayout>                            <CollectionView.ItemTemplate>                                <DataTemplate>
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Horizontal" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
                                     <StackLayout  VerticalOptions="Center" Margin="0,0,13,0" >
                                         <Label Text="{Binding CurrentDayTime}" HorizontalTextAlignment="Center" FontSize="20"/>
                                         <Image Source="{Binding WeatherImage}" HorizontalOptions="Center" HeightRequest="30" WidthRequest="30"/>
@@ -67,9 +71,9 @@
                         </ListView>
                     </Grid>
                     <StackLayout HeightRequest="40" Orientation="Horizontal">
-                        <Image Source="document.png" WidthRequest="35" HeightRequest="35"  />
+                        <ImageButton Source="document.png" x:Name="Logout" WidthRequest="35" BackgroundColor="Transparent" HeightRequest="35" Clicked="logoutSession"  />
                         <Label Text="carousel points" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
-                        <Image Source="menu.png" HorizontalOptions="EndAndExpand" HeightRequest="35" WidthRequest="35"/>
+                        <ImageButton Source="menu.png" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" HeightRequest="35" WidthRequest="35"/>
                     </StackLayout>
                 </StackLayout>
             </Frame>

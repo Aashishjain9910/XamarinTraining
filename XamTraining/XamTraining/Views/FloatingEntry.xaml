@@ -13,7 +13,7 @@
                 </Frame>
                 <StackLayout Spacing="0" Padding="0" VerticalOptions="Center" Margin="0">
                     <Label x:Name="HiddenLabel" FontSize="16" Margin="0" Padding="0" BackgroundColor="AliceBlue" IsVisible="False"/>
-                    <Controls:CustomEntry x:Name="EntryField" Text="{Binding Text,Mode=TwoWay}" VerticalOptions="Center" Margin="0" WidthRequest="300" BackgroundColor="Yellow"/>
+                    <Controls:CustomEntry x:Name="EntryField" Text="{Binding Text, Mode=TwoWay}" VerticalOptions="Center" Margin="0" WidthRequest="300"/>
                 </StackLayout>
             </StackLayout>
         </Frame>

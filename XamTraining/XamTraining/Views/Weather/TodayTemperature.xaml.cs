@@ -150,5 +150,11 @@ namespace XamTraining.Views.Weather
 
 
         }
+        private void logoutSession(object sender, System.EventArgs e)
+        {
+            SessionManager sm = new SessionManager();
+            sm.DeleteSession();
+            App.Current.MainPage.Navigation.PushAsync(new LoginPage());
+        }
     }
 }

@@ -75,6 +75,7 @@ namespace XamTraining.Models
                     App.Current.MainPage.Navigation.PushAsync(new TodayTemperature());
                     }
 
+
                 }
             }
         }

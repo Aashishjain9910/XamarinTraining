@@ -19,6 +19,7 @@ namespace XamTraining
         {
             AddValue(USER_LOGGED_IN_KEY, "true");
         }
+
         public string GetData(string key)
         {
             return Preferences.Get(key, "");
@@ -29,5 +30,15 @@ namespace XamTraining
             Preferences.Set(key, value);
         }
 
+        public void DeleteSession()
+        {
+            DeleteData(USER_LOGGED_IN_KEY);
+        }
+
+        private void DeleteData(string key)
+        {
+            Preferences.Remove(key, "");
+        }
     }
+
 }
