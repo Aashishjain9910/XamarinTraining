@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" IsVisible="False" Opacity="0.5"
              x:Class="XamTraining.Views.CustomActivityIndicator.LoadingIndicator">
-    <ContentView.Resources>
+    <!--<ContentView.Resources>
         <ResourceDictionary>
             
             <Style x:Key="LoadingIndicatorContainerStyle" TargetType="StackLayout">
@@ -31,5 +31,5 @@
     <StackLayout Style="{StaticResource LoadingIndicatorContainerStyle}">
         <ActivityIndicator x:Name="LoadingIndicatorSpinner" Style="{StaticResource LoadingIndicatorStyle}" />
         <Label x:Name="LoadingIndicatorText" Style="{StaticResource LoadingIndicatorTextStyle}" />
-    </StackLayout>
+    </StackLayout>-->
 </ContentView>

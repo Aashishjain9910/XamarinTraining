@@ -23,8 +23,10 @@ namespace XamTraining.Views
             InitializeComponent();
             loginModel.Show += Model_Show;
             BindingContext = loginModel;
-            localPath = Path.Combine(FileSystem.AppDataDirectory, localFileName);
-            localPath1 = Path.Combine(FileSystem.AppDataDirectory, localFileName1);
+            localEmailPath = Path.Combine(FileSystem.AppDataDirectory, localEmailFileName);
+            localPasswordPath = Path.Combine(FileSystem.AppDataDirectory, localPasswordFileName);
+            //localForgotPasswordPath = Path.Combine(FileSystem.AppDataDirectory, localForgotPasswordFile);
+            //localSecurityAnswerPath = Path.Combine(FileSystem.AppDataDirectory, localSecurityAnswerFile);
 
         }
 
@@ -33,29 +35,50 @@ namespace XamTraining.Views
             var str = (string)sender;
             App.Current.MainPage.DisplayAlert("Error", str, "OK");
         }
-
-        const string localFileName = "TheFile.txt";
-        const string localFileName1 = "TheFile1.txt";
         
         
+        //Email and password file 
+        const string localEmailFileName = "EmailFile.txt";
+        const string localPasswordFileName = "PasswordFile.txt";
+        
+        string localEmailPath;
+        string localPasswordPath;
 
-        string localPath;
-        string localPath1;
+        //forgotpassword files
+        //const string localForgotPasswordFile = "ForgotPasswordFile.txt";
+        //string localForgotPasswordPath;
+
+        const string localSecurityAnswerFile = "SecurityAnswerFile.txt";
+        string localSecurityAnswerPath;
+        
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             if (e.Value)
             {
-                File.WriteAllText(localPath, mailId.Text);
-                File.WriteAllText(localPath1, pass.Text);
-                
+                File.WriteAllText(localEmailPath, mail.Text);
+                File.WriteAllText(localPasswordPath, pswd.Text);
+                //File.WriteAllText(localPasswordPath, SecurityAnswer.Text);
+
             }
 
         }
 
-        private void loadEmail(object sender, EventArgs e)
+        //private void loadEmail(object sender, EventArgs e)
+        //{
+        //    EmailContext.Text = File.ReadAllText(localEmailPath);
+        //    PassContext.Text = File.ReadAllText(localPasswordPath);
+        //}
+
+        private void Clicked_ForgotPassword(object sender, EventArgs e)
         {
-            EmailContext.Text = File.ReadAllText(localPath1);
-            PassContext.Text = File.ReadAllText(localPath);
+            App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordVerificationPage());
+        }
+
+       
+
+        private void CreateNewAccountButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage.Navigation.PushAsync(new NewRegistration());
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +21,9 @@ namespace XamTraining.Views.Weather
         public TodayTemperature()
         {
             InitializeComponent();
+
+
+
 
             currentDayWeather = new List<WeatherScreenTemperature>
             {
@@ -144,7 +149,7 @@ namespace XamTraining.Views.Weather
                     MaxTemperature="23°",
                     MinTemperature="16°"
                 }
-                
+
             };
             daywiseList.ItemsSource = dailyWeather;
 
@@ -156,5 +161,14 @@ namespace XamTraining.Views.Weather
             sm.DeleteSession();
             App.Current.MainPage.Navigation.PushAsync(new LoginPage());
         }
+
+
+
+        
+
     }
+
+
+
+    
 }

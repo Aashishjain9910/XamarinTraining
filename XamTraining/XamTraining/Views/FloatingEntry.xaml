@@ -6,13 +6,13 @@
              mc:Ignorable="d"
              x:Class="XamTraining.Views.FloatingEntry">
     <ContentView.Content>
-        <Frame x:Name="frame" Margin="1" Padding="0.2">
+        <Frame x:Name="frame" Margin="1" Padding="0.2" BackgroundColor="Transparent">
             <StackLayout Orientation="Horizontal" Spacing="0" Padding="0" Margin="0">
-                <Frame Padding="5" Margin="0" VerticalOptions="Center" BackgroundColor="White">
+                <Frame Padding="5" Margin="0" VerticalOptions="Center" BackgroundColor="Transparent">
                     <Image x:Name="img" />
                 </Frame>
                 <StackLayout Spacing="0" Padding="0" VerticalOptions="Center" Margin="0">
-                    <Label x:Name="HiddenLabel" FontSize="16" Margin="0" Padding="0" BackgroundColor="AliceBlue" IsVisible="False"/>
+                    <Label x:Name="HiddenLabel" FontSize="16" Margin="0" Padding="0" BackgroundColor="Aquamarine"  IsVisible="False"/>
                     <Controls:CustomEntry x:Name="EntryField" Text="{Binding Text, Mode=TwoWay}" VerticalOptions="Center" Margin="0" WidthRequest="300"/>
                 </StackLayout>
             </StackLayout>

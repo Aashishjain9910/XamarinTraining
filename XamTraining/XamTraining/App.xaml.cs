@@ -6,6 +6,8 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using XamTraining.Views.Weather;
+using XamTraining.Views.API;
+using XamTraining.Views.CustomActivityIndicator;
 
 namespace XamTraining
 {
@@ -15,17 +17,18 @@ namespace XamTraining
         {
             InitializeComponent();
 
-             //MainPage = new NavigationPage( new TestPage3());
-            SessionManager sm = new SessionManager();
-            if (sm.isUserLoggedIn())
-            {
-                MainPage = new NavigationPage(new TodayTemperature());
+             MainPage = new NavigationPage( new Activity());
+             //MainPage = new NavigationPage( new ExampleApiCheck());
+            //SessionManager sm = new SessionManager();
+            //if (sm.isUserLoggedIn())
+            //{
+            //    MainPage = new NavigationPage(new TodayTemperature());
 
-            }
-            else
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
+            //}
+            //else
+            //{
+            //    MainPage = new NavigationPage(new LoginPage());
+            //}
 
         }
 

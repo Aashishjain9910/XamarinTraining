@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using XamTraining.Views;
 using XamTraining.Views.Weather;
@@ -16,6 +18,7 @@ namespace XamTraining.Models
         public event EventHandler Show;
         public LoginModel()
         {
+            //localPath = Path.Combine(FileSystem.AppDataDirectory, localFileName);
 
         }
 
@@ -79,6 +82,21 @@ namespace XamTraining.Models
                 }
             }
         }
+
+        //public ICommand ForgotPasswordCommand
+        //{
+        //    get
+        //    {
+        //        return new Command(OnForgotPass);
+        //    }
+        //}
+
+        //const string localFileName = "ForgotPasswordFile.txt";
+        //string localPath;
+        //public void OnForgotPass()
+        //{
+        //    File.WriteAllText(localPath, Email.Text);
+        //}
 
     }
 }
