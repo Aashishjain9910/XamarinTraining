@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PocDevelops.Activity_Indicator.ActivityIndicatorPage">
+    <ContentPage.Content>
+
+        <Grid x:Name="MainContent">
+
+
+            <Frame Grid.Row="0">
+
+                <ContentView  x:Name="OneArcsContentView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
+            </Frame>
+            <Frame Grid.Row="1"  >
+                <ContentView x:Name="TwoSeparateArcsContentView"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                </ContentView>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

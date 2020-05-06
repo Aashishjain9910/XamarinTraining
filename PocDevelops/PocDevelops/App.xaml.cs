@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PocDevelops.Activity_Indicator;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,8 @@ namespace PocDevelops
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+           // MainPage = new MainPage();
+            MainPage = new NavigationPage(new ActivityIndicatorPage());
         }
 
         protected override void OnStart()
