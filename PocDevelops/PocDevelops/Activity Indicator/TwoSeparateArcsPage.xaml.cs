@@ -18,11 +18,11 @@ namespace PocDevelops
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            TwoSepareteArcs page = new TwoSepareteArcs();
-            TwoSeparateArcsContentView.Content = page;
-        }
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    TwoSepareteArcs page = new TwoSepareteArcs();
+        //    TwoSeparateArcsContentView.Content = page;
+        //}
     }
 }

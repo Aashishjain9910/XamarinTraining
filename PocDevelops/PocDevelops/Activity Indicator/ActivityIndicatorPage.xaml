@@ -6,19 +6,43 @@
              mc:Ignorable="d"
              x:Class="PocDevelops.Activity_Indicator.ActivityIndicatorPage">
     <ContentPage.Content>
+        <ScrollView>
 
-        <Grid x:Name="MainContent">
+            <Grid>
 
+                <Frame Grid.Row="0">
+                    <!--<ContentView  x:Name="OneArcsContentView" />-->
+                    <StackLayout Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Frame Padding="0" HeightRequest="100" WidthRequest="100" BackgroundColor="Transparent">
 
-            <Frame Grid.Row="0">
+                            <ContentView x:Name="SingleArc"></ContentView>
+                        </Frame>
+                        <Label Text="Loading..." x:Name="loading" HorizontalOptions="CenterAndExpand" VerticalOptions="End" FontAttributes="Bold" FontSize="Medium"/>
+                        <Button Text="BounceIn" Clicked="bouncein" />
+                    </StackLayout>
 
-                <ContentView  x:Name="OneArcsContentView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-
-            </Frame>
-            <Frame Grid.Row="1"  >
-                <ContentView x:Name="TwoSeparateArcsContentView"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                </ContentView>
-            </Frame>
-        </Grid>
+                </Frame>
+                <Frame Grid.Row="1"  >
+                    <StackLayout Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Frame Padding="0" HeightRequest="100" WidthRequest="100" BackgroundColor="Transparent">
+                            <ContentView x:Name="TwoSeparateArcsContentView"/>
+                        </Frame>
+                        <Label Text="Loading..." HorizontalOptions="CenterAndExpand" VerticalOptions="End" FontAttributes="Bold" FontSize="Medium"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="2"  >
+                    <StackLayout>
+                        
+                    <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="." x:Name="updown" FontSize="Header" FontAttributes="Bold" TextColor="Red"/>
+                        <Label Text="." x:Name="updown1" FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
+                        <Label Text="." x:Name="updown2" FontSize="Header" FontAttributes="Bold" TextColor="Green"/>
+                        <Label Text="." x:Name="updown3" FontSize="Header" FontAttributes="Bold" TextColor="Yellow"/>
+                    </StackLayout>
+                        <Button Text="Load" Clicked="load"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

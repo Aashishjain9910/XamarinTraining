@@ -18,12 +18,7 @@ namespace PocDevelops
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            OneArc page = new OneArc();
-            SingleArc.Content = page;
-        }
+        
 
     }
 }
