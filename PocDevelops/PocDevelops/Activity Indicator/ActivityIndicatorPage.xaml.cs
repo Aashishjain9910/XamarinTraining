@@ -56,14 +56,11 @@ namespace PocDevelops.Activity_Indicator
             int i = 2;
             while (i == 2)
             {
-                await updown.TranslateTo(0, -20, 200);
-                await updown.TranslateTo(0, 0, 200);
-                await updown1.TranslateTo(0, -20, 200);
-                await updown1.TranslateTo(0, 0, 200);
-                await updown2.TranslateTo(0, -20, 200);
-                await updown2.TranslateTo(0, 0, 200);
-                await updown3.TranslateTo(0, -20, 200);
-                await updown3.TranslateTo(0, 0, 200);
+                await updown.TranslateTo(-20, -10, 600, Easing.SinInOut);
+                await updown.TranslateTo(0, 0, 600);
+                
+                await updown3.TranslateTo(20, -10, 600, Easing.SinInOut);
+                await updown3.TranslateTo(0, 0, 600);
             }
         }
     }

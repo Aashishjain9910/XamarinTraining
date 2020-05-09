@@ -14,7 +14,6 @@
                     <!--<ContentView  x:Name="OneArcsContentView" />-->
                     <StackLayout Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Frame Padding="0" HeightRequest="100" WidthRequest="100" BackgroundColor="Transparent">
-
                             <ContentView x:Name="SingleArc"></ContentView>
                         </Frame>
                         <Label Text="Loading..." x:Name="loading" HorizontalOptions="CenterAndExpand" VerticalOptions="End" FontAttributes="Bold" FontSize="Medium"/>
@@ -33,11 +32,14 @@
                 <Frame Grid.Row="2"  >
                     <StackLayout>
                         
-                    <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Label Text="." x:Name="updown" FontSize="Header" FontAttributes="Bold" TextColor="Red"/>
-                        <Label Text="." x:Name="updown1" FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                        <Label Text="." x:Name="updown2" FontSize="Header" FontAttributes="Bold" TextColor="Green"/>
-                        <Label Text="." x:Name="updown3" FontSize="Header" FontAttributes="Bold" TextColor="Yellow"/>
+                    <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
+                        <Label Text="." x:Name="updown" FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
+                        <Label Text="." FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
+                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
+                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
+                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
+                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
+                        <Label Text="." x:Name="updown3" FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
                     </StackLayout>
                         <Button Text="Load" Clicked="load"/>
                     </StackLayout>
