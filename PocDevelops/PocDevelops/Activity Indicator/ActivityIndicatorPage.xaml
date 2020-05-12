@@ -31,16 +31,13 @@
                 </Frame>
                 <Frame Grid.Row="2"  >
                     <StackLayout>
-                        
-                    <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
-                        <Label Text="." x:Name="updown" FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                        <Label Text="." FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                        <Label Text="."  FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                        <Label Text="." x:Name="updown3" FontSize="Header" FontAttributes="Bold" TextColor="Blue"/>
-                    </StackLayout>
+                        <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
+                            <BoxView HeightRequest="20" WidthRequest="20" CornerRadius="10" x:Name="updown"  Color="Green"/>
+                            <BoxView HeightRequest="20" WidthRequest="20" CornerRadius="10" Color="Green"/>
+                            <BoxView Color="Green" HeightRequest="20" WidthRequest="20" CornerRadius="10" />
+                            <BoxView HeightRequest="20" Color="Green" WidthRequest="20" CornerRadius="10" />
+                            <BoxView HeightRequest="20" x:Name="updown3" Color="Green" WidthRequest="20" CornerRadius="10" />
+                        </StackLayout>
                         <Button Text="Load" Clicked="load"/>
                     </StackLayout>
                 </Frame>
