@@ -1,4 +1,5 @@
 ﻿using PocDevelops.Activity_Indicator;
+using PocDevelops.Buttons;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,11 +13,12 @@ namespace PocDevelops
             InitializeComponent();
 
            // MainPage = new MainPage();
-            MainPage = new NavigationPage(new ActivityIndicatorPage());
+            MainPage = new NavigationPage(new ButtonMainPage());
         }
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()

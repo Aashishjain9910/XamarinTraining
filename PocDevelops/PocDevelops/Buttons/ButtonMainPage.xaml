@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:locals="clr-namespace:PocDevelops.Buttons"
+             mc:Ignorable="d"
+             x:Class="PocDevelops.Buttons.ButtonMainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <locals:ImageButtons x:Name="customIB" 
+                                 LayoutOrientation="Horizontal"
+                                 ButtonBackgroundColor="Blue" 
+                                 BorderPadding="2"   
+                                 ButtonBorderColor="ForestGreen" 
+                                 CornerRadiusOfButton="20" 
+                                 SourceOfImage="home_white.png" 
+                                 ImageBackgroundColor="Yellow" 
+                                 ImageBorderColor="Orange"
+                                 ImageVisibility="True"
+                                 ImageCornerRadius="20" 
+                                 ButtonText="Home" 
+                                 ColorOfText="White" 
+                                 TextFontSize="20" 
+                                 TextFontAttribute="None"
+                                 ButtonDirectionFlow="LeftToRight"
+                                 TextFontFamily=""
+                                 ImageOpacity="1"
+                                 ButtonShadow="False"
+                                 ImageBackgroundOpacity="1"
+                                 TextOpacity="1"
+                                 ButtonOpacity="1"
+                                 IsButtonEnable="True"
+                                 IsButtonVisible="True"
+                                 
+                                 />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
