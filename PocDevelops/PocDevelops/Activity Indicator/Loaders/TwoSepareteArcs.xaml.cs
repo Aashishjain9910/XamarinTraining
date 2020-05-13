@@ -72,12 +72,12 @@ namespace PocDevelops.Loaders
             canvas.Clear();
             float left, right;
             float top, bottom;
-            right = left = (info.Width - 300) / 2;
-            top = bottom = (info.Height - 300) / 2;
+            right = left = (info.Width - 200) / 2;
+            top = bottom = (info.Height - 200) / 2;
 
             
             SKRect rect = new SKRect(left, top, info.Width - right, info.Height - bottom);
-            SKRect innerRect = new SKRect(left + 40, top + 40, (info.Width - right) - 40, (info.Height - bottom) - 40);
+            SKRect innerRect = new SKRect(left + 30, top + 30, (info.Width - right) - 30, (info.Height - bottom) - 30);
             //canvas.DrawCircle(info.Width / 2, info.Height / 2, 100, firstArcPaint);
             using (SKPath path = new SKPath())
             {

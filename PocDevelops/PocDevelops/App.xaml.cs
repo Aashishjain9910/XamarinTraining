@@ -13,7 +13,7 @@ namespace PocDevelops
             InitializeComponent();
 
            // MainPage = new MainPage();
-            MainPage = new NavigationPage(new ButtonMainPage());
+            MainPage = new NavigationPage(new ActivityIndicatorPage());
         }
 
         protected override void OnStart()

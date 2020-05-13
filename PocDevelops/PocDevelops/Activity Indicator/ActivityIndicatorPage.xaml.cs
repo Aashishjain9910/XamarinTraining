@@ -1,4 +1,5 @@
-﻿using PocDevelops.Loaders;
+﻿using PocDevelops.Activity_Indicator.Loaders;
+using PocDevelops.Loaders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,51 +18,36 @@ namespace PocDevelops.Activity_Indicator
         {
             InitializeComponent();
 
-            
-
-            //OneArc content1 = new OneArc();
-            //OneArcsContentView.Content = content1;
-
-
-            //TwoSepareteArcs content2 = new TwoSepareteArcs();
-            //TwoSeparateArcsContentView.Content = content2;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+
+            // this is used for first loader
             OneArc oneArcPage = new OneArc();
             SingleArc.Content = oneArcPage;
 
+
+
+            // this is used for second loader
             TwoSepareteArcs twoSeparateArcPage = new TwoSepareteArcs();
             TwoSeparateArcsContentView.Content = twoSeparateArcPage;
 
+
+
+            // this is used for third loader
+            PendulumLoader pendulumLoaderPage = new PendulumLoader();
+            PendulumLoaderContentView.Content = pendulumLoaderPage;
+
             
+            
+            // This is used for fourth loader
+            BouncingLoader bouncingLoaderPage = new BouncingLoader();
+            BouncingLoaderContentView.Content = bouncingLoaderPage;
 
         }
-
-
        
-
-        private async void bouncein(object sender, EventArgs e)
-        {
-            await SingleArc.TranslateTo(0, -50, 4000, Easing.BounceIn);
-            await SingleArc.TranslateTo(0, 0, 2000);
-            await SingleArc.TranslateTo(0, 50, 4000, Easing.BounceOut);
-            await SingleArc.TranslateTo(0, 0, 2000);
-        }
-
-        private async void load(object sender, EventArgs e)
-        {
-            int i = 2;
-            while (i == 2)
-            {
-                await updown.TranslateTo(-20, -10, 600, Easing.SinInOut);
-                await updown.TranslateTo(0, 0, 600);
-                
-                await updown3.TranslateTo(20, -10, 600, Easing.SinInOut);
-                await updown3.TranslateTo(0, 0, 600);
-            }
-        }
     }
 }

@@ -53,7 +53,7 @@ namespace PocDevelops.Loaders
 
         public bool OnTimerClik()
         {
-            OvalStartAngle += 18;
+            OvalStartAngle += 15;
             canvas.InvalidateSurface();
             return true;
         }
@@ -67,11 +67,11 @@ namespace PocDevelops.Loaders
             canvas.Clear();
             float left, right;
             float top, bottom;
-            right = left = (info.Width - 300) / 2;
-            top = bottom = (info.Height - 300) / 2;
+            right = left = (info.Width - 160) / 2;
+            top = bottom = (info.Height - 160) / 2;
 
             SKRect rect = new SKRect(left, top, info.Width - right, info.Height - bottom);
-            canvas.DrawCircle(info.Width / 2, info.Height / 2, 100, firstArcPaint);
+            canvas.DrawCircle(info.Width / 2, info.Height / 2, 60, firstArcPaint);
             using (SKPath path = new SKPath())
             {
                 path.AddArc(rect, OvalStartAngle, OvalSweepAngle);
