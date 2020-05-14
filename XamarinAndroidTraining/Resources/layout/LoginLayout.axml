@@ -1,0 +1,252 @@
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:minWidth="25px"
+	android:minHeight="25px"
+	android:background="@android:color/black"
+	tools:gridSpec="0|8|#0093eeff|K:#ee8700ff:16,l:72,l:16,r|S:#83ee00ff:16,0,l:16,56,l:16,0,r">
+	<TextView
+		android:text="@string/registrationPageHeading"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textColor="@android:color/white"
+		android:background="@android:color/black"
+		android:textSize="30sp"
+		android:textAlignment="center"
+		/>
+
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+		android:background="@android:color/white"/>
+	<FrameLayout
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+		android:background="@android:color/white"
+		android:layout_gravity="center_horizontal"
+		>
+	<ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+		android:background="@android:color/black"
+			android:layout_gravity="center"
+		android:src="@drawable/user"/>
+	</FrameLayout>
+
+
+	<LinearLayout
+		
+		android:background="@android:color/black"
+		android:paddingHorizontal="10dp"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="409.0dp">
+
+
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:background="@android:color/holo_orange_light"
+			android:layout_width="160dp"
+			android:paddingLeft="3dp"
+			android:layout_height="400dp">
+			<TextView
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/firstName"
+				android:layout_marginTop="10dp"
+				android:textSize="20dp"
+				android:id="@+id/firstNameTextView" />
+
+			<TextView
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/lastName"
+				android:layout_marginTop="10dp"
+				android:textSize="20sp"
+				android:id="@+id/lastNameTextView" />
+
+			<TextView
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/emailId"
+				android:layout_marginTop="10dp"
+				android:textSize="20sp"
+				android:id="@+id/emailTextView" />
+
+
+			<TextView
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/department"
+				android:layout_marginTop="10dp"
+				android:textSize="20sp"
+				android:id="@+id/departmentTextView" />
+
+			<TextView
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/password"
+				android:layout_marginTop="10dp"
+				android:textSize="20sp"
+				android:id="@+id/passwordTextView" />
+
+			<TextView
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/gender"
+				android:layout_marginTop="10dp"
+				android:textSize="20sp"
+				android:id="@+id/genderTextView" />
+
+			<TextView
+				android:textColor="@android:color/black"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/skills"
+				android:layout_marginTop="10dp"
+				android:textSize="20sp"
+				android:id="@+id/skillTextView" />
+
+		</LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@android:color/holo_blue_bright"
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/darker_gray"
+                android:id="@+id/firstNameEditText"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:id="@+id/lastNameEditText"
+                android:background="@android:color/darker_gray"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="10dp"
+                android:id="@+id/emailEditText"
+                android:background="@android:color/darker_gray"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:layout_marginTop="10dp"
+                android:id="@+id/departmentEditText"
+                android:background="@android:color/darker_gray"/>            
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/passwordEditText"
+                android:background="@android:color/darker_gray"/>
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+				android:id="@+id/genderRadioGroup"
+                android:layout_marginTop="10dp">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+					android:gravity="right"
+                    android:text="@string/radioMale"
+					android:id="@+id/maleRadioButton"
+                    android:textColor="@android:color/black"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+					android:gravity="right"
+					android:id="@+id/femaleRadioButton"
+                    android:text="@string/radioFemale"
+                    android:textColor="@android:color/black"/>
+            </RadioGroup>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dotNet"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cSharp"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/xamarinForms"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/xamarinAndroid"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/xamarinIOS"/>
+
+        </LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingHorizontal="10dp"
+		android:paddingBottom="10dp"
+		android:gravity="right"
+		android:background="@android:color/black"
+		android:orientation="horizontal">
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/submitButton"
+			android:textAllCaps="false"
+		android:layout_gravity="right"
+		android:layout_marginRight="10dp"
+		
+		android:background="@android:color/holo_orange_light"
+		android:textColor="@android:color/black"
+		android:id="@+id/submitButton"/>
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/resetButton"
+			android:textAllCaps="false"
+		android:layout_gravity="right"
+		android:background="@android:color/holo_orange_light"
+		android:textColor="@android:color/black"
+		android:id="@+id/resetButton"/>
+	</LinearLayout>
+	
+</LinearLayout>
