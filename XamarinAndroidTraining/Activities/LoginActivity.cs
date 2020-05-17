@@ -16,110 +16,132 @@ using Pattern = Java.Util.Regex.Pattern;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "LoginActivity", MainLauncher = true) ]
+    [Activity(Label = "LoginActivity", MainLauncher =true)]
     public class LoginActivity : Activity
     {
-        //TextView firstNameTextView;
-        //TextView lastNameTextView;
-        //TextView emailTextView;
-        //TextView departmentTextView;
-        //TextView passwordTextView;
-        //TextView genderTextView;
-        //TextView skillsTextView;
+        EditText emailEditText, passwordEditText;
+        Button loginButton;
+        ImageView facebookImage, googleImage;
+        TextView signUpTextView, forgotPassword;
 
-        EditText firstNameEditText,
-                 lastNameEditText,
-                 emailEditText,
-                 departmentEditText,
-                 passwordEditText;
-
-        RadioGroup genderRadioGroup;
-
-        RadioButton maleRadioButton,
-                    femaleRadioButton;
-
-
-        Button submitButton, resetButton;
-
+        string username,phonenumber, password;
+        AlertDialog.Builder dialogBuilder;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.LoginLayout);
-            firstNameEditText = FindViewById<EditText>(Resource.Id.firstNameEditText);
-            lastNameEditText = FindViewById<EditText>(Resource.Id.lastNameEditText);
+            SetContentView(Resource.Layout.Login_Layout);
+
             emailEditText = FindViewById<EditText>(Resource.Id.emailEditText);
-            departmentEditText = FindViewById<EditText>(Resource.Id.departmentEditText);
-            passwordEditText = FindViewById<EditText>(Resource.Id.passwordEditText);
-            genderRadioGroup = FindViewById<RadioGroup>(Resource.Id.genderRadioGroup);
+            string emailString = Intent.GetStringExtra("emailValue");
+            emailEditText.Text = emailString;
 
-            submitButton = FindViewById<Button>(Resource.Id.submitButton);
-            resetButton = FindViewById<Button>(Resource.Id.resetButton);
-
-
+            username = Intent.GetStringExtra("userFirstNameValue");
             
+            passwordEditText = FindViewById<EditText>(Resource.Id.passwordEditText);
+            password = Intent.GetStringExtra("passwordValue");
+
+
+            forgotPassword = FindViewById<TextView>(Resource.Id.forgotPasswordTextView);
+            
+            phonenumber = Intent.GetStringExtra("phoneNumberValue");
+            
+            facebookImage = FindViewById<ImageView>(Resource.Id.facebookImage);
+            
+            googleImage = FindViewById<ImageView>(Resource.Id.googleImage);
+            
+            signUpTextView = FindViewById<TextView>(Resource.Id.signUpTextView);
+
+            loginButton = FindViewById<Button>(Resource.Id.LoginButton);
+            dialogBuilder = new AlertDialog.Builder(this);
+            // Create your application here
         }
 
         protected override void OnResume()
         {
             base.OnResume();
-            submitButton.Click += SubmitButton_Click;
-            resetButton.Click += ResetButton_Click;
+            forgotPassword.Click += ForgotPassword_Click;
+            loginButton.Click += LoginButton_Click;
+
+            facebookImage.Click += FacebookImage_Click;
+            googleImage.Click += GoogleImage_Click;
+            signUpTextView.Click += SignUpTextView_Click;
+        }
+
+        private void ForgotPassword_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(ForgotPasswordActivity));
+            intent.PutExtra("email", emailEditText.Text);
+            intent.PutExtra("phone", phonenumber);
+            intent.PutExtra("passWord", password);
+            StartActivity(intent);
+        }
+
+        private void SignUpTextView_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(RegistrationActivity));
+            StartActivity(intent);
+        }
+
+        private void GoogleImage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(GoogleWebViewActivity));
+            StartActivity(intent);
         }
 
         protected override void OnPause()
         {
             base.OnPause();
-            submitButton.Click -= SubmitButton_Click;
-            resetButton.Click -= ResetButton_Click;
-        }
-        private void ResetButton_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent();
-            Finish();
+            forgotPassword.Click -= ForgotPassword_Click;
+            loginButton.Click -= LoginButton_Click;
+            facebookImage.Click -= FacebookImage_Click;
+            googleImage.Click -= GoogleImage_Click;
+            signUpTextView.Click -= SignUpTextView_Click;
+
         }
 
-        private void SubmitButton_Click(object sender, EventArgs e)
+        private void FacebookImage_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(FacebookWebViewActivity));
+            StartActivity(intent);
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
         {
             if (validInput())
             {
-                Intent intent = new Intent(this, typeof(MainActivity));
+                Intent intent = new Intent(this, typeof(ShowPasswordActivity));
+                intent.PutExtra("userFirstname", username);
                 StartActivity(intent);
             }
         }
 
+
         private bool validInput()
         {
             string error_text = "";
-            EditText checkFirstName = (EditText)FindViewById(Resource.Id.firstNameEditText);
-            EditText checkLastName = (EditText)FindViewById(Resource.Id.lastNameEditText);
             EditText checkEmail = (EditText)FindViewById(Resource.Id.emailEditText);
-            EditText checkDepartment = (EditText)FindViewById(Resource.Id.departmentEditText);
             EditText checkPassword = (EditText)FindViewById(Resource.Id.passwordEditText);
 
-            string firstName = checkFirstName.Text.ToString();
-            string lastName = checkLastName.Text.ToString();
-            string department = checkDepartment.Text.ToString();
             string email = checkEmail.Text.ToString();
             string password = checkPassword.Text.ToString();
+            string passwordString = Intent.GetStringExtra("passwordValue");
+            
 
-            if (firstName == null || firstName.Equals(""))
+            if((email == null || email.Equals("")) && (password == null || password.Equals("")))
             {
-                error_text = "Please enter firstname";
-                checkFirstName.Error = error_text;
-                _ = checkFirstName.RequestFocus();
-                return false;
+                dialogBuilder.SetMessage("Please enter EmailId and Password");
+                AlertDialog alertDialog = dialogBuilder.Create();
+                alertDialog.SetTitle("Error");
+                alertDialog.SetCanceledOnTouchOutside(false);
+                alertDialog.SetButton("Ok", (c, ev) =>
+                {
+                   
+                });
+
+                alertDialog.Show();
+
             }
-            
-            
-            if (lastName == null || lastName.Equals(""))
-            {
-                error_text = "Please enter lastname";
-                checkLastName.Error = error_text;
-                _ = checkLastName.RequestFocus();
-                return false;
-            }
-            
-            
+
             if (email == null || email.Equals(""))
             {
                 error_text = "Please enter email id";
@@ -137,15 +159,6 @@ namespace XamarinAndroidTraining.Activities
             }
 
 
-            if (department == null || department.Equals(""))
-            {
-                error_text = "Please enter department";
-                checkDepartment.Error = error_text;
-                _ = checkDepartment.RequestFocus();
-                return false;
-            }
-
-
             if (password == null || password.Equals(""))
             {
                 error_text = "Please enter password";
@@ -156,16 +169,23 @@ namespace XamarinAndroidTraining.Activities
 
             if (!IsValidPassword(password))
             {
-                error_text = "Please enter password";
+                error_text = "Please enter correct password";
                 checkPassword.Error = error_text;
                 _ = checkPassword.RequestFocus();
                 return false;
             }
 
-
+            if (password != passwordString)
+            {
+                error_text = "Please enter the Correct Password";
+                checkPassword.Error = error_text;
+                _ = checkPassword.RequestFocus();
+                return false;
+            }
 
             return true;
         }
+
         private bool isValidEmail(string email)
         {
             return Android.Util.Patterns.EmailAddress.Matcher(email).Matches();
@@ -173,8 +193,10 @@ namespace XamarinAndroidTraining.Activities
 
         private bool IsValidPassword(string pass)
         {
-            Pattern pattern = Pattern.Compile("[a-zA-Z0-9\\!\\@\\#\\$]{8,24}");
+            Pattern pattern = Pattern.Compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
             return !TextUtils.IsEmpty(pass) && pattern.Matcher(pass).Matches();
         }
+
+
     }
 }

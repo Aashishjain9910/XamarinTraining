@@ -1,0 +1,159 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAsj">
+    <TextView
+        android:text="@string/registrationPageHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
+        android:textSize="30sp"
+        android:textAlignment="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/white"/>
+    <FrameLayout
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/roundedCorners_LoginButton"
+        android:layout_gravity="center_horizontal">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorAsj"
+            android:layout_gravity="center"
+            android:src="@drawable/user"/>
+    </FrameLayout>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/firstNameEditText"
+        android:inputType="text"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:hint="First Name"
+        android:background="@drawable/rounded_corner_edittext"
+        android:textColorHint="@android:color/black"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/lastNameEditText"
+        android:inputType="text"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:hint="Last Name"
+        android:background="@drawable/rounded_corner_edittext"
+        android:textColorHint="@android:color/black"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/emailEditText"
+        android:inputType="textEmailAddress"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:hint="Email Address"
+        android:background="@drawable/rounded_corner_edittext"
+        android:textColorHint="@android:color/black"/>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/phoneNumberEditText"
+        android:inputType="phone"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:hint="Phone Number"
+        android:background="@drawable/rounded_corner_edittext"
+        android:textColorHint="@android:color/black"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/passwordEditText"
+        android:inputType="textPassword"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:hint="@string/password"
+        android:background="@drawable/rounded_corner_edittext"
+        android:textColorHint="@android:color/black"/>
+    <!--
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/genderRadioGroup"
+        android:layout_marginTop="10dp">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/radioMale"
+            android:id="@+id/maleRadioButton"
+            android:textColor="@android:color/black"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:id="@+id/femaleRadioButton"
+            android:text="@string/radioFemale"
+            android:textColor="@android:color/black"/>
+    </RadioGroup>
+-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_marginVertical="30dp"
+        android:gravity="center_horizontal"
+        android:background="@color/colorAsj"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_marginHorizontal="15dp"
+            android:textSize="20sp"
+            android:background="@drawable/roundedCorners_LoginButton"
+            android:text="@string/submitButton"
+            android:id="@+id/submitButton"/>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_marginHorizontal="15dp"
+            android:textSize="20sp"
+            android:background="@drawable/roundedCorners_LoginButton"
+            android:text="@string/resetButton"
+            android:id="@+id/resetButton"/>
+
+    </LinearLayout>
+
+</LinearLayout>
