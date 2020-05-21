@@ -116,7 +116,8 @@ namespace XamarinAndroidTraining.Activities
             string email = checkEmail.Text.ToString();
             string password = checkPassword.Text.ToString();
 
-            if (firstName == null || firstName.Equals(""))
+
+            if (string.IsNullOrWhiteSpace(firstName))
             {
                 error_text = "Please enter firstname";
                 checkFirstName.Error = error_text;
@@ -125,7 +126,7 @@ namespace XamarinAndroidTraining.Activities
             }
             
             
-            if (lastName == null || lastName.Equals(""))
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 error_text = "Please enter lastname";
                 checkLastName.Error = error_text;
@@ -134,7 +135,7 @@ namespace XamarinAndroidTraining.Activities
             }
             
             
-            if (email == null || email.Equals(""))
+            if (string.IsNullOrWhiteSpace(email))
             {
                 error_text = "Please enter email id";
                 checkEmail.Error = error_text;
@@ -151,7 +152,7 @@ namespace XamarinAndroidTraining.Activities
             }
 
 
-            if (phoneNumber == null || phoneNumber.Equals(""))
+            if (string.IsNullOrWhiteSpace(phoneNumber))
             {
                 error_text = "Please enter phone number";
                 checkPhoneNumber.Error = error_text;
@@ -168,7 +169,7 @@ namespace XamarinAndroidTraining.Activities
             }
 
 
-            if (password == null || password.Equals(""))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 error_text = "Please enter password";
                 checkPassword.Error = error_text;

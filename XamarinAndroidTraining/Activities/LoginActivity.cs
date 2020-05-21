@@ -7,16 +7,19 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Provider;
 using Android.Runtime;
 using Android.Text;
 using Android.Views;
 using Android.Widget;
 using Java.Util.Regex;
+using Newtonsoft.Json;
+using XamarinAndroidTraining.models;
 using Pattern = Java.Util.Regex.Pattern;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "LoginActivity", MainLauncher =true)]
+    [Activity(Label = "LoginActivity")]
     public class LoginActivity : Activity
     {
         EditText emailEditText, passwordEditText;
@@ -24,7 +27,7 @@ namespace XamarinAndroidTraining.Activities
         ImageView facebookImage, googleImage;
         TextView signUpTextView, forgotPassword;
 
-        string username,phonenumber, password;
+        string username, phonenumber, password;
         AlertDialog.Builder dialogBuilder;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,19 +39,19 @@ namespace XamarinAndroidTraining.Activities
             emailEditText.Text = emailString;
 
             username = Intent.GetStringExtra("userFirstNameValue");
-            
+
             passwordEditText = FindViewById<EditText>(Resource.Id.passwordEditText);
             password = Intent.GetStringExtra("passwordValue");
 
 
             forgotPassword = FindViewById<TextView>(Resource.Id.forgotPasswordTextView);
-            
+
             phonenumber = Intent.GetStringExtra("phoneNumberValue");
-            
+
             facebookImage = FindViewById<ImageView>(Resource.Id.facebookImage);
-            
+
             googleImage = FindViewById<ImageView>(Resource.Id.googleImage);
-            
+
             signUpTextView = FindViewById<TextView>(Resource.Id.signUpTextView);
 
             loginButton = FindViewById<Button>(Resource.Id.LoginButton);
@@ -107,16 +110,32 @@ namespace XamarinAndroidTraining.Activities
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            if (validInput())
+            if (ValidInput())
             {
-                Intent intent = new Intent(this, typeof(ShowPasswordActivity));
-                intent.PutExtra("userFirstname", username);
-                StartActivity(intent);
+                Intent intent = new Intent(this, typeof(DashboardActivity));
+
+                User user = new User()
+                {
+                    Email = emailEditText.Text,
+                    Password = "Jain@9910"
+                };
+
+                intent.PutExtra("User", JsonConvert.SerializeObject(user));
+
+
+                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                ISharedPreferencesEditor edit = pref.Edit();
+                edit.PutString("Email", emailEditText.Text.Trim());
+                edit.PutString("Password", passwordEditText.Text.Trim());
+                edit.Apply();
+                this.StartActivity(intent);
+                //intent.PutExtra("userFirstname", username);
+                //StartActivity(intent);
             }
         }
 
 
-        private bool validInput()
+        private bool ValidInput()
         {
             string error_text = "";
             EditText checkEmail = (EditText)FindViewById(Resource.Id.emailEditText);
@@ -125,9 +144,9 @@ namespace XamarinAndroidTraining.Activities
             string email = checkEmail.Text.ToString();
             string password = checkPassword.Text.ToString();
             string passwordString = Intent.GetStringExtra("passwordValue");
-            
 
-            if((email == null || email.Equals("")) && (password == null || password.Equals("")))
+
+            if ((email == null || email.Equals("")) && (password == null || password.Equals("")))
             {
                 dialogBuilder.SetMessage("Please enter EmailId and Password");
                 AlertDialog alertDialog = dialogBuilder.Create();
@@ -135,7 +154,7 @@ namespace XamarinAndroidTraining.Activities
                 alertDialog.SetCanceledOnTouchOutside(false);
                 alertDialog.SetButton("Ok", (c, ev) =>
                 {
-                   
+
                 });
 
                 alertDialog.Show();
@@ -175,13 +194,13 @@ namespace XamarinAndroidTraining.Activities
                 return false;
             }
 
-            if (password != passwordString)
-            {
-                error_text = "Please enter the Correct Password";
-                checkPassword.Error = error_text;
-                _ = checkPassword.RequestFocus();
-                return false;
-            }
+            //if (password != passwordString)
+            //{
+            //    error_text = "Please enter the Correct Password";
+            //    checkPassword.Error = error_text;
+            //    _ = checkPassword.RequestFocus();
+            //    return false;
+            //}
 
             return true;
         }

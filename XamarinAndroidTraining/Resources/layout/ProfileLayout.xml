@@ -1,0 +1,39 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center"
+    android:background="@color/colorAsj">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        android:text="@string/welcomeProfile"/>
+
+    <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            android:background="@drawable/roundedCorners_LoginButton"
+            android:text="@string/contactDetailButton"
+            android:id="@+id/nextButton"/>
+
+     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        android:text="hello!!!"
+        android:id="@+id/helloTextView"/>
+
+
+</LinearLayout>
