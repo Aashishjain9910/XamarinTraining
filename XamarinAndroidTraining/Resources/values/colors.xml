@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2c3e50</color>
-    <color name="colorPrimaryDark">#1B3147</color>
+	<color name="ColorPrimary">#2196F3</color>
+	<color name="ColorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#3498db</color>
 
 	<color name="colorAsj">#20318b</color>
 	<color name="colorReceipt">#818abd</color>
 	<color name="colorForgotPassword">#3e56db</color>
 	<color name="loginButton">#4bcab6</color>
+
+	<color name="buttonThemeColor">#4bcab6</color>
 	
 </resources>

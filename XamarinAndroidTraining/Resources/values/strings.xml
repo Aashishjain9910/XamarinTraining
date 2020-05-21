@@ -25,8 +25,9 @@
 	<!--buttons-->
 	<string name="submitButton">Submit</string>
 	<string name="resetButton">Reset</string>
-	
-	
+
+	<string name="nextButton">Go to Profile Page</string>
+	<string name="contactDetailButton">Contact detail</string>
 	
 	<!--login page-->
 
@@ -44,5 +45,15 @@
 	<string name="associatedAccountLine">Enter the email address and phone number associated with this account</string>
 	<string name="submitFPButton">Submit</string>
 	
+
+	<string name="welcomeDashboard">Welcome, You have succefully Logged In</string>
+	
+	<!--profile page-->
+	<string name="welcomeProfile">Welcome to the Profile Page</string>
+
+
+<!--listview page::::: user cell layout-->
+	<!--<string name="changesMode">Changes Mode:</string>
+	<string name="statusDate">19 JUL 2019</string>-->
 
 </resources>
