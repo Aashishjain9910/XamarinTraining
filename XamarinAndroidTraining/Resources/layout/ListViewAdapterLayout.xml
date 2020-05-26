@@ -1,19 +1,45 @@
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="match_parent" >
+
+    <Toolbar
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:text="Logs"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="25sp"/>
+        android:layout_height="60dp"
+        android:background="@color/accent_material_dark">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_menu"
+            android:id="@+id/ic_menu"/>
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="60dp"
+                android:text="Logs"
+                android:gravity="center"
+                android:layout_gravity="right"
+                android:textColor="@android:color/black"
+                android:textSize="25sp"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_plus"
+                android:layout_gravity="center" 
+                android:id="@+id/ic_plus"
+                />
+        </LinearLayout>
+    </Toolbar>
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fastScrollEnabled="true"/>
+        android:fastScrollEnabled="true"
+        android:divider="@null"/>
 </LinearLayout>

@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\ContactListActivity.cs" />
     <Compile Include="Activities\DashboardActivity.cs" />
     <Compile Include="Activities\FacebookWebViewActivity.cs" />
     <Compile Include="Activities\ForgotPasswordActivity.cs" />
@@ -232,6 +233,23 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\UserRowCellLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ContactListLayout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

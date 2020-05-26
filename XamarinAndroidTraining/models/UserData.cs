@@ -30,7 +30,7 @@ namespace XamarinAndroidTraining.models
             {
                 ChangesMode="Changes Mode:",
                 StatusDate="19 JUL 2019",
-                StatusChanged="Status changed from Not Started to In progress",
+                StatusChanged="Status changed from Not started to In progress",
                 ByWillSmith="By: Will Smith",
                 UpdateTime="02 hours ago"
             });
@@ -38,7 +38,7 @@ namespace XamarinAndroidTraining.models
             {
                 ChangesMode="Changes Mode:",
                 StatusDate="19 JUL 2019",
-                StatusChanged="Status changed from Not Started to In progress",
+                StatusChanged= "Status changed from In progress to Completed",
                 ByWillSmith="By: Will Smith",
                 UpdateTime="02 hours ago"
             });
@@ -46,7 +46,7 @@ namespace XamarinAndroidTraining.models
             {
                 ChangesMode="Changes Mode:",
                 StatusDate="19 JUL 2019",
-                StatusChanged="Status changed from Not Started to In progress",
+                StatusChanged= "Status changed from Not started to In progress",
                 ByWillSmith="By: Will Smith",
                 UpdateTime="02 hours ago"
             });
@@ -54,7 +54,7 @@ namespace XamarinAndroidTraining.models
             {
                 ChangesMode="Changes Mode:",
                 StatusDate="19 JUL 2019",
-                StatusChanged="Status changed from Not Started to In progress",
+                StatusChanged= "Status changed from Not started to In progress",
                 ByWillSmith="By: Will Smith",
                 UpdateTime="02 hours ago"
             });
@@ -62,7 +62,7 @@ namespace XamarinAndroidTraining.models
             {
                 ChangesMode="Changes Mode:",
                 StatusDate="19 JUL 2019",
-                StatusChanged="Status changed from Not Started to In progress",
+                StatusChanged= "Status changed from Not started to In progress",
                 ByWillSmith="By: Will Smith",
                 UpdateTime="02 hours ago"
             });
@@ -70,7 +70,7 @@ namespace XamarinAndroidTraining.models
             {
                 ChangesMode="Changes Mode:",
                 StatusDate="19 JUL 2019",
-                StatusChanged="Status changed from Not Started to In progress",
+                StatusChanged= "Status changed from Not started to On hold.",
                 ByWillSmith="By: Will Smith",
                 UpdateTime="02 hours ago"
             });
@@ -78,7 +78,7 @@ namespace XamarinAndroidTraining.models
             {
                 ChangesMode="Changes Mode:",
                 StatusDate="19 JUL 2019",
-                StatusChanged="Status changed from Not Started to In progress",
+                StatusChanged= "Status changed from Not started to In progress",
                 ByWillSmith="By: Will Smith",
                 UpdateTime="02 hours ago"
             });

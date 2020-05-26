@@ -7,6 +7,8 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
+using Android.Text.Style;
 using Android.Views;
 using Android.Widget;
 using XamarinAndroidTraining.models;
@@ -17,6 +19,8 @@ namespace XamarinAndroidTraining.Adapter
     {
         List<User> users;
 
+        TextView statusChanged;
+        SpannableString span;
         public MyCustomListAdapter(List<User> users)
         {
             this.users = users;
@@ -54,9 +58,11 @@ namespace XamarinAndroidTraining.Adapter
 
                 var changesMode = view.FindViewById<TextView>(Resource.Id.changesMode);
                 var statusDate = view.FindViewById<TextView>(Resource.Id.statusDate);
-                var statusChanged = view.FindViewById<TextView>(Resource.Id.statusChanged);
+                statusChanged = view.FindViewById<TextView>(Resource.Id.statusChanged);
                 var byWillSmith = view.FindViewById<TextView>(Resource.Id.byWillSmith);
                 var updateTime = view.FindViewById<TextView>(Resource.Id.updateTime);
+
+
 
                 view.Tag = new MyCustomListAdapterViewHolder()
                 {
@@ -67,7 +73,7 @@ namespace XamarinAndroidTraining.Adapter
                     UpdateTime = updateTime
                 };
             }
-            
+
             var holder = (MyCustomListAdapterViewHolder)view.Tag;
 
             holder.ChangesMode.Text = users[position].ChangesMode;
@@ -75,6 +81,42 @@ namespace XamarinAndroidTraining.Adapter
             holder.StatusChanged.Text = users[position].StatusChanged;
             holder.ByWillSmith.Text = users[position].ByWillSmith;
             holder.UpdateTime.Text = users[position].UpdateTime;
+
+
+            span = new SpannableString(holder.StatusChanged.Text);
+            string startIndex;
+
+            var tempStatus = holder.StatusChanged.Text;
+
+            if (tempStatus.Contains("In progress"))
+            {
+
+                startIndex = "In progress";
+                span.SetSpan(new ForegroundColorSpan(Android.Graphics.Color.Red), tempStatus.IndexOf(startIndex), (tempStatus.IndexOf(startIndex)) + (startIndex.Length), SpanTypes.ExclusiveExclusive);
+
+            }
+            if (tempStatus.Contains("Not started"))
+            {
+
+                startIndex = "Not started";
+                span.SetSpan(new ForegroundColorSpan(Android.Graphics.Color.Blue), tempStatus.IndexOf(startIndex), (tempStatus.IndexOf(startIndex)) + (startIndex.Length), SpanTypes.ExclusiveExclusive);
+
+            }
+            if (tempStatus.Contains("On hold"))
+            {
+
+                startIndex = "On hold";
+                span.SetSpan(new ForegroundColorSpan(Android.Graphics.Color.Yellow), tempStatus.IndexOf(startIndex), (tempStatus.IndexOf(startIndex)) + (startIndex.Length), SpanTypes.ExclusiveExclusive);
+
+            }
+            if (tempStatus.Contains("Completed"))
+            {
+
+                startIndex = "Completed";
+                span.SetSpan(new ForegroundColorSpan(Android.Graphics.Color.Green), tempStatus.IndexOf(startIndex), (tempStatus.IndexOf(startIndex)) + (startIndex.Length), SpanTypes.ExclusiveExclusive);
+            }
+
+            holder.StatusChanged.TextFormatted = span;
 
             return view;
         }
