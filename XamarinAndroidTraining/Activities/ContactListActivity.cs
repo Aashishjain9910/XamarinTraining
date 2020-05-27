@@ -22,7 +22,8 @@ namespace XamarinAndroidTraining.Activities
             var uri = ContactsContract.Contacts.ContentUri;
             string[] projection = {
             ContactsContract.Contacts.InterfaceConsts.Id,
-            ContactsContract.Contacts.InterfaceConsts.DisplayName
+            ContactsContract.Contacts.InterfaceConsts.DisplayName,
+            ContactsContract.CommonDataKinds.Phone.Number
         };
             var cursor = ManagedQuery(uri, projection, null, null, null);
             var contactList = new List<string>();
@@ -30,7 +31,7 @@ namespace XamarinAndroidTraining.Activities
             {
                 do
                 {
-                    contactList.Add(cursor.GetString(cursor.GetColumnIndex(projection[1])));
+                    contactList.Add(cursor.GetString(cursor.GetColumnIndex(projection[2])));
                 } while (cursor.MoveToNext());
             }
             ListAdapter = new ArrayAdapter<string>(this, Resource.Layout.ContactListLayout, contactList);

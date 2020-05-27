@@ -16,7 +16,7 @@ using XamarinAndroidTraining.models;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "ListViewAdapterActivity", MainLauncher = true)]
+    [Activity(Label = "ListViewAdapterActivity")]
     public class ListViewAdapterActivity : Activity
     {
         ListView listview;

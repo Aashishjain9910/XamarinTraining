@@ -61,11 +61,13 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\CameraActivity.cs" />
     <Compile Include="Activities\ContactListActivity.cs" />
     <Compile Include="Activities\DashboardActivity.cs" />
     <Compile Include="Activities\FacebookWebViewActivity.cs" />
     <Compile Include="Activities\ForgotPasswordActivity.cs" />
     <Compile Include="Activities\FragmentButtonActivity.cs" />
+    <Compile Include="Activities\GalleryActivity.cs" />
     <Compile Include="Activities\GoogleWebViewActivity.cs" />
     <Compile Include="Activities\ListViewAdapterActivity.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
@@ -250,6 +252,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ContactListLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="menu\menu.xml" />
+    <AndroidResource Include="Resources\layout\GalleryLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CameraLayout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

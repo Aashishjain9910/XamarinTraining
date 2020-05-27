@@ -1,12 +1,12 @@
 
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:gravity="center"
-    android:background="@color/colorAsj">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+     
+<!--
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,8 +24,7 @@
         android:gravity="center_horizontal"
         android:text="This is the message text."
         android:id="@+id/msgText"/>
-
-
+-->
 
     <Button
         android:layout_width="150dp"
@@ -36,8 +35,62 @@
         android:layout_margin="15dp"
         android:textSize="20sp"
         android:background="@drawable/roundedCorners_LoginButton"
-        android:text="@string/nextButton"
-        android:id="@+id/nextButton"/>
+        android:text="Camera"
+        android:id="@+id/camera"/>
+
+    
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:background="@drawable/roundedCorners_LoginButton"
+        android:text="Gallery"
+        android:id="@+id/gallery"/>
+
+    
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:background="@drawable/roundedCorners_LoginButton"
+        android:text="Contacts"
+        android:id="@+id/contacts"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:background="@drawable/roundedCorners_LoginButton"
+        android:text="ListView"
+        android:id="@+id/listView"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:layout_margin="15dp"
+        android:textSize="20sp"
+        android:background="@drawable/roundedCorners_LoginButton"
+        android:text="Login"
+        android:id="@+id/login"/>
+
+
+
+
 
 
 </LinearLayout>
