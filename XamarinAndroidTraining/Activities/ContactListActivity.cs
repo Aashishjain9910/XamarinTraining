@@ -19,10 +19,9 @@ namespace XamarinAndroidTraining.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            var uri = ContactsContract.Contacts.ContentUri;
+            var uri = ContactsContract.CommonDataKinds.Phone.ContentUri;
             string[] projection = {
-            ContactsContract.Contacts.InterfaceConsts.Id,
-            ContactsContract.Contacts.InterfaceConsts.DisplayName,
+            ContactsContract.CommonDataKinds.Phone.InterfaceConsts.DisplayName,
             ContactsContract.CommonDataKinds.Phone.Number
         };
             var cursor = ManagedQuery(uri, projection, null, null, null);
@@ -31,7 +30,9 @@ namespace XamarinAndroidTraining.Activities
             {
                 do
                 {
-                    contactList.Add(cursor.GetString(cursor.GetColumnIndex(projection[2])));
+
+                    contactList.Add(cursor.GetString(cursor.GetColumnIndex(projection[0])));
+                    contactList.Add(cursor.GetString(cursor.GetColumnIndex(projection[1])));
                 } while (cursor.MoveToNext());
             }
             ListAdapter = new ArrayAdapter<string>(this, Resource.Layout.ContactListLayout, contactList);

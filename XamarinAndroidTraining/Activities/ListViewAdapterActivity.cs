@@ -33,7 +33,7 @@ namespace XamarinAndroidTraining.Activities
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
-            ic_menu = FindViewById<ImageView>(Resource.Id.ic_menu);
+            //ic_menu = FindViewById<ImageView>(Resource.Id.ic_menu);
             ic_plus = FindViewById<ImageView>(Resource.Id.ic_plus);
 
         }

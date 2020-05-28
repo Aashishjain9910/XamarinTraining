@@ -51,7 +51,9 @@
 	<!--profile page-->
 	<string name="welcomeProfile">Welcome to the Profile Page</string>
 
-
+	<string name="facebook_app_id">257157595485678</string>
+	
+	
 <!--listview page::::: user cell layout-->
 	<!--<string name="changesMode">Changes Mode:</string>
 	<string name="statusDate">19 JUL 2019</string>-->

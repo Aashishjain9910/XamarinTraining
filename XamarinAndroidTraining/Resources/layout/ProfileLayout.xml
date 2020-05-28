@@ -4,36 +4,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:gravity="center"
     android:background="@color/colorAsj">
+   
+    
+    <com.facebook.login.widget.ProfilePictureView
+        android:id="@+id/ImgPro"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        />
+
     <TextView
-        android:layout_width="match_parent"
+        android:text="User Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/TxtName"
         android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:gravity="center_horizontal"
-        android:text="@string/welcomeProfile"/>
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp" />
 
-    <Button
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:layout_margin="15dp"
-            android:textSize="20sp"
-            android:background="@drawable/roundedCorners_LoginButton"
-            android:text="@string/contactDetailButton"
-            android:id="@+id/nextButton"/>
-
-     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:gravity="center_horizontal"
-        android:text="hello!!!"
-        android:id="@+id/helloTextView"/>
 
 
 </LinearLayout>

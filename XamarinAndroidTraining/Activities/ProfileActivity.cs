@@ -9,45 +9,37 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Login.Widget;
+using static XamarinAndroidTraining.Activities.FacebookWebViewActivity;
 
 namespace XamarinAndroidTraining.Activities
 {
     [Activity(Label = "ProfileActivity")]
-    public class ProfileActivity : Activity
+    public class ProfileActivity : Activity,IFacebookCallback
     {
-        Button nextButton;
-        TextView helloTextView;
+
+        private MyProfileTracker profileTracker;
+        private ICallbackManager fBCallManager;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            FacebookSdk.SdkInitialize(this.ApplicationContext);
+            profileTracker = new MyProfileTracker();
+            profileTracker.StartTracking();
             SetContentView(Resource.Layout.ProfileLayout);
-            nextButton = FindViewById<Button>(Resource.Id.nextButton);
-            helloTextView = FindViewById<TextView>(Resource.Id.helloTextView);
-            // Create your application here
+
+
+
         }
 
 
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-            nextButton.Click += NextButton_Click;
-        }
-
-        private void NextButton_Click(object sender, EventArgs e)
-        {
-            Intent intent1 = new Intent();
-            intent1.SetData(Android.Net.Uri.Parse(helloTextView.Text));
-            SetResult(Result.Ok, intent1);
-            this.Finish();
-        }
+        public void OnCancel() { }
+        public void OnError(FacebookException p0) { }
+        public void OnSuccess(Java.Lang.Object p0) { }
 
 
-        protected override void OnPause()
-        {
-            base.OnPause();
-            nextButton.Click += NextButton_Click;
-
-        }
     }
+
 }

@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "DashboardActivity", Theme = "@style/Theme.DesignDemo", MainLauncher=true)]
+    [Activity(Label = "DashboardActivity", Theme = "@style/Theme.DesignDemo")]
     public class DashboardActivity : Activity
     {
         //static int requestId = 1;
