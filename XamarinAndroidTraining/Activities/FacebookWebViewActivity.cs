@@ -11,14 +11,15 @@ using Android.Views;
 using Android.Widget;
 using Xamarin.Facebook.Login.Widget;
 using Xamarin.Facebook;
+using Xamarin.Facebook.Login;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "FacebookWebViewActivity",MainLauncher =true)]
+    [Activity(Label = "FacebookWebViewActivity")]
     public class FacebookWebViewActivity : Activity, IFacebookCallback
     {
         TextView  TxtName;
-        LoginButton BtnFBLogin;
+        //LoginButton BtnFBLogin;
         ProfilePictureView mprofile;
         private MyProfileTracker profileTracker;
         private ICallbackManager fBCallManager;
@@ -28,21 +29,49 @@ namespace XamarinAndroidTraining.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-
             FacebookSdk.SdkInitialize(this.ApplicationContext);
+
+
+
+            SetContentView(Resource.Layout.Facebook_WebView);
+
+            loginButton = FindViewById<Button>(Resource.Id.loginButton);
+
+            
             profileTracker = new MyProfileTracker();
             profileTracker.mOnProfileChanged += profileTracker_onProfileChanged;
             profileTracker.StartTracking();
-            // Set our view from the "main" layout resource  
-            SetContentView(Resource.Layout.Facebook_WebView);
-            BtnFBLogin = FindViewById<LoginButton>(Resource.Id.fblogin);
-            loginButton = FindViewById<Button>(Resource.Id.loginButton);
+
+            
+            
             TxtName = FindViewById<TextView>(Resource.Id.TxtName);
             mprofile = FindViewById<ProfilePictureView>(Resource.Id.ImgPro);
-            BtnFBLogin.SetReadPermissions(new List<string> { "user_friends", "public_profile" });
+
+
+
+            //BtnFBLogin = FindViewById<LoginButton>(Resource.Id.fblogin);
+            //BtnFBLogin.SetReadPermissions(new List<string> { "user_friends", "public_profile" });
+            //BtnFBLogin.RegisterCallback(fBCallManager, this);
+
+
             fBCallManager = CallbackManagerFactory.Create();
-            BtnFBLogin.RegisterCallback(fBCallManager, this);
+            LoginManager.Instance.RegisterCallback(fBCallManager, this);
+
+            loginButton.Click += (o, e) =>
+            {
+                if (AccessToken.CurrentAccessToken != null)
+                {
+                    LoginManager.Instance.LogOut();
+                    loginButton.Text = "Login";
+                }
+                else
+                {
+
+                    LoginManager.Instance.LogInWithReadPermissions(this, new List<string> { "public_profile", "user_friends" });
+                    //loginButton.Text = "Logout";
+                }
+            };
+
 
 
         }
@@ -50,25 +79,31 @@ namespace XamarinAndroidTraining.Activities
         protected override void OnResume()
         {
             base.OnResume();
-            loginButton.Click += LoginButton_Click;
+            //loginButton.Click += LoginButton_Click;
         }
 
-        private void LoginButton_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(LoginActivity));
-            StartActivity(intent);
-        }
+        //private void LoginButton_Click(object sender, EventArgs e)
+        //{
+        //    Intent intent = new Intent(this, typeof(LoginActivity));
+        //    StartActivity(intent);
+        //}
 
         protected override void OnPause()
         {
             base.OnPause();
-            loginButton.Click -= LoginButton_Click;
+            //loginButton.Click -= LoginButton_Click;
 
         }
 
         public void OnCancel() { }
         public void OnError(FacebookException p0) { }
-        public void OnSuccess(Java.Lang.Object p0) { }
+        public void OnSuccess(Java.Lang.Object p0)
+        {
+            Intent intent = new Intent(this, typeof(ProfileActivity));
+            intent.PutExtra("pId", mprofile.ProfileId);
+            intent.PutExtra("name", TxtName.Text);
+            StartActivity(intent);
+        }
         void profileTracker_onProfileChanged(object sender, OnProfileChangedEventArgs e)
         {
             if (e.mProfile != null)
@@ -78,6 +113,7 @@ namespace XamarinAndroidTraining.Activities
                     
                     TxtName.Text = e.mProfile.Name;
                     mprofile.ProfileId = e.mProfile.Id;
+                    loginButton.Text = "Logout";
                 }
                 catch (Java.Lang.Exception ex) { }
             }
@@ -85,12 +121,19 @@ namespace XamarinAndroidTraining.Activities
             {
                 TxtName.Text = "Name";
                 mprofile.ProfileId = null;
+                loginButton.Text = "Logout";
             }
         }
         protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
             fBCallManager.OnActivityResult(requestCode, (int)resultCode, data);
+        }
+
+        protected override void OnDestroy()
+        {
+            profileTracker.StopTracking();
+            base.OnDestroy();
         }
 
         public class MyProfileTracker : ProfileTracker

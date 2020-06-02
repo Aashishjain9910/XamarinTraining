@@ -14,24 +14,36 @@ using Android.Views;
 using Android.Widget;
 using Java.Util.Regex;
 using Newtonsoft.Json;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Login;
+using Xamarin.Facebook.Login.Widget;
 using XamarinAndroidTraining.models;
 using Pattern = Java.Util.Regex.Pattern;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "LoginActivity")]
-    public class LoginActivity : Activity
+    [Activity(Label = "LoginActivity", MainLauncher=true)]
+    public class LoginActivity : Activity, IFacebookCallback
     {
         EditText emailEditText, passwordEditText;
         Button loginButton;
-        ImageView facebookImage, googleImage;
-        TextView signUpTextView, forgotPassword;
+        Button facebookImage;
+
+        string abcd;
+
+        ProfilePictureView mprofile;
+        private MyProfileTracker profileTracker;
+        private ICallbackManager fBCallManager;
+
+        ImageView googleImage;
+        TextView signUpTextView, forgotPassword, TxtName;
 
         string username, phonenumber, password;
         AlertDialog.Builder dialogBuilder;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            FacebookSdk.SdkInitialize(this.ApplicationContext);
             SetContentView(Resource.Layout.Login_Layout);
 
             emailEditText = FindViewById<EditText>(Resource.Id.emailEditText);
@@ -45,18 +57,49 @@ namespace XamarinAndroidTraining.Activities
 
 
             forgotPassword = FindViewById<TextView>(Resource.Id.forgotPasswordTextView);
-
+            TxtName = FindViewById<TextView>(Resource.Id.forgotPasswordTextView);
             phonenumber = Intent.GetStringExtra("phoneNumberValue");
 
-            facebookImage = FindViewById<ImageView>(Resource.Id.facebookImage);
+
+
+            #region facebookbutton
+
+            facebookImage = FindViewById<Button>(Resource.Id.facebookImage);
+            profileTracker = new MyProfileTracker();
+            profileTracker.mOnProfileChanged += profileTracker_onProfileChanged;
+            profileTracker.StartTracking();
+
+            fBCallManager = CallbackManagerFactory.Create();
+            LoginManager.Instance.RegisterCallback(fBCallManager, this);
+
+            facebookImage.Click += (o, e) =>
+            {
+                if (AccessToken.CurrentAccessToken != null)
+                {
+                    LoginManager.Instance.LogOut();
+                    //facebookImage.Text = "Login";
+                }
+                else
+                {
+
+                    LoginManager.Instance.LogInWithReadPermissions(this, new List<string> { "public_profile", "user_friends" });
+                    //loginButton.Text = "Logout";
+                }
+            };
+            
+            #endregion
+
+
 
             googleImage = FindViewById<ImageView>(Resource.Id.googleImage);
-
             signUpTextView = FindViewById<TextView>(Resource.Id.signUpTextView);
 
             loginButton = FindViewById<Button>(Resource.Id.LoginButton);
             dialogBuilder = new AlertDialog.Builder(this);
-            // Create your application here
+           
+
+
+
         }
 
         protected override void OnResume()
@@ -65,7 +108,7 @@ namespace XamarinAndroidTraining.Activities
             forgotPassword.Click += ForgotPassword_Click;
             loginButton.Click += LoginButton_Click;
 
-            facebookImage.Click += FacebookImage_Click;
+            //facebookImage.Click += FacebookImage_Click;
             googleImage.Click += GoogleImage_Click;
             signUpTextView.Click += SignUpTextView_Click;
         }
@@ -96,38 +139,38 @@ namespace XamarinAndroidTraining.Activities
             base.OnPause();
             forgotPassword.Click -= ForgotPassword_Click;
             loginButton.Click -= LoginButton_Click;
-            facebookImage.Click -= FacebookImage_Click;
+            //facebookImage.Click -= FacebookImage_Click;
             googleImage.Click -= GoogleImage_Click;
             signUpTextView.Click -= SignUpTextView_Click;
 
         }
 
-        private void FacebookImage_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(FacebookWebViewActivity));
-            StartActivity(intent);
-        }
+        //private void FacebookImage_Click(object sender, EventArgs e)
+        //{
+        //    Intent intent = new Intent(this, typeof(FacebookWebViewActivity));
+        //    StartActivity(intent);
+        //}
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             if (ValidInput())
             {
-                Intent intent = new Intent(this, typeof(DashboardActivity));
+                Intent intent = new Intent(this, typeof(ProfileActivity));
 
-                User user = new User()
-                {
-                    Email = emailEditText.Text,
-                    Password = "Jain@9910"
-                };
+                //User user = new User()
+                //{
+                //    Email = emailEditText.Text,
+                //    Password = "Jain@9910"
+                //};
 
-                intent.PutExtra("User", JsonConvert.SerializeObject(user));
+                //intent.PutExtra("User", JsonConvert.SerializeObject(user));
 
 
-                ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
-                ISharedPreferencesEditor edit = pref.Edit();
-                edit.PutString("Email", emailEditText.Text.Trim());
-                edit.PutString("Password", passwordEditText.Text.Trim());
-                edit.Apply();
+                //ISharedPreferences pref = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
+                //ISharedPreferencesEditor edit = pref.Edit();
+                //edit.PutString("Email", emailEditText.Text.Trim());
+                //edit.PutString("Password", passwordEditText.Text.Trim());
+                //edit.Apply();
                 this.StartActivity(intent);
                 //intent.PutExtra("userFirstname", username);
                 //StartActivity(intent);
@@ -217,5 +260,81 @@ namespace XamarinAndroidTraining.Activities
         }
 
 
+
+        public void OnCancel() 
+        {
+        
+        }
+        public void OnError(FacebookException p0) 
+        {
+        
+        }
+        public void OnSuccess(Java.Lang.Object p0)
+        {
+            
+        }
+        void profileTracker_onProfileChanged(object sender, OnProfileChangedEventArgs e)
+        {
+            if (e.mProfile != null)
+            {
+                try
+                {
+                    abcd = e.mProfile.Name;
+                    string dp = e.mProfile.Id;
+                    //TxtName.Text = e.mProfile.Name;
+                    //mprofile.ProfileId = e.mProfile.Id;
+                    //facebookImage.Text = "Logout";
+                    Intent intent = new Intent(this, typeof(ProfileActivity));
+                    //intent.PutExtra("pId", mprofile.ProfileId);
+                    intent.PutExtra("name", abcd);
+                    intent.PutExtra("dpId", dp);
+                    
+
+                    StartActivity(intent);
+                }
+                catch (Java.Lang.Exception ex) { }
+            }
+            //else
+            //{
+                
+            //    //TxtName.Text = "Name";
+            //    //mprofile.ProfileId = null;
+            //    //facebookImage.Text = "Logout";
+            //}
+
+           
+        }
+        protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            fBCallManager.OnActivityResult(requestCode, (int)resultCode, data);
+        }
+
+        protected override void OnDestroy()
+        {
+            profileTracker.StopTracking();
+            base.OnDestroy();
+        }
+
+        public class MyProfileTracker : ProfileTracker
+        {
+            public event EventHandler<OnProfileChangedEventArgs> mOnProfileChanged;
+            protected override void OnCurrentProfileChanged(Profile oldProfile, Profile newProfile)
+            {
+                if (mOnProfileChanged != null)
+                {
+                    mOnProfileChanged.Invoke(this, new OnProfileChangedEventArgs(newProfile));
+                }
+            }
+        }
+        public class OnProfileChangedEventArgs : EventArgs
+        {
+            public Profile mProfile;
+            public OnProfileChangedEventArgs(Profile profile)
+            {
+                mProfile = profile;
+            }
+
+        }
     }
 }
