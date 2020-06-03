@@ -22,7 +22,7 @@ using Pattern = Java.Util.Regex.Pattern;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "LoginActivity", MainLauncher=true)]
+    [Activity(Label = "LoginActivity", MainLauncher=false)]
     public class LoginActivity : Activity, IFacebookCallback
     {
         EditText emailEditText, passwordEditText;

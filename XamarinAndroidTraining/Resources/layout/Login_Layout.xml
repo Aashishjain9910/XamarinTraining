@@ -64,7 +64,6 @@
                 android:layout_marginHorizontal="10dp"
                 android:id="@id/passwordEditText"
                 android:hint="@string/password"
-                
                 android:background="@drawable/rounded_corner_edittext"
                 android:inputType="textPassword"
                 android:textColorHint="@android:color/black"/>
@@ -114,7 +113,7 @@
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
                     android:padding="0dp"
-                   android:background="@drawable/facebook"
+                    android:background="@drawable/facebook"
                     android:id="@+id/facebookImage"/>
                 <ImageView
                     android:layout_width="40dp"
