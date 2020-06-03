@@ -18,8 +18,8 @@ namespace XamarinAndroidTraining.Activities
     [Activity(Label = "ProfileActivity")]
     public class ProfileActivity : Activity
     {
-        string usrName, usrPic;
-        TextView TxtName;
+        string usrName, usrPic, usrEmail;
+        TextView TxtName, emailText;
         //LoginButton BtnFBLogin;
         ProfilePictureView mprofile;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -30,15 +30,17 @@ namespace XamarinAndroidTraining.Activities
             SetContentView(Resource.Layout.ProfileLayout);
 
 
-            TxtName = FindViewById<TextView>(Resource.Id.TxtName);
             mprofile = FindViewById<ProfilePictureView>(Resource.Id.ImgPro);
-
+            TxtName = FindViewById<TextView>(Resource.Id.TxtName);
+            emailText = FindViewById<TextView>(Resource.Id.emailText);
 
 
            usrName  = Intent.GetStringExtra("name");
             usrPic = Intent.GetStringExtra("dpId");
+            usrEmail = Intent.GetStringExtra("emailId");
             TxtName.Text = usrName;
             mprofile.ProfileId = usrPic;
+            emailText.Text = usrEmail;
         }
 
 

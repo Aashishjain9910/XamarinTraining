@@ -18,12 +18,22 @@ using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 using Xamarin.Facebook.Login.Widget;
 using XamarinAndroidTraining.models;
+
+using Android.Gms.Common.Apis;
+using Android.Gms.Tasks;
+using Android.Support.V7.App;
+using Android.Gms.Auth.Api.SignIn;
+using Android.Gms.Auth.Api;
+using Firebase.Auth;
+using Firebase;
+
 using Pattern = Java.Util.Regex.Pattern;
+using AlertDialog = Android.App.AlertDialog;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "LoginActivity", MainLauncher=false)]
-    public class LoginActivity : Activity, IFacebookCallback
+    [Activity(Label = "LoginActivity", MainLauncher=true)]
+    public class LoginActivity : Activity, IFacebookCallback, IOnSuccessListener, IOnFailureListener
     {
         EditText emailEditText, passwordEditText;
         Button loginButton;
@@ -35,7 +45,14 @@ namespace XamarinAndroidTraining.Activities
         private MyProfileTracker profileTracker;
         private ICallbackManager fBCallManager;
 
-        ImageView googleImage;
+        Button signinButton;
+        GoogleSignInOptions gso;
+        GoogleApiClient googleApiClient;
+
+        FirebaseAuth firebaseAuth;
+
+
+
         TextView signUpTextView, forgotPassword, TxtName;
 
         string username, phonenumber, password;
@@ -86,12 +103,26 @@ namespace XamarinAndroidTraining.Activities
                     //loginButton.Text = "Logout";
                 }
             };
-            
+
             #endregion
 
 
 
-            googleImage = FindViewById<ImageView>(Resource.Id.googleImage);
+            signinButton = FindViewById<Button>(Resource.Id.googleImage);
+            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
+                .RequestIdToken("1037739809912-lujoj1fsmh5kdbk4qocbcqcge5csprm6.apps.googleusercontent.com")
+                .RequestEmail()
+                .Build();
+
+            googleApiClient = new GoogleApiClient.Builder(this)
+                .AddApi(Auth.GOOGLE_SIGN_IN_API, gso).Build();
+            googleApiClient.Connect();
+
+            firebaseAuth = GetFirebaseAuth();
+            UpdateUI();
+
+
+
             signUpTextView = FindViewById<TextView>(Resource.Id.signUpTextView);
 
             loginButton = FindViewById<Button>(Resource.Id.LoginButton);
@@ -109,7 +140,7 @@ namespace XamarinAndroidTraining.Activities
             loginButton.Click += LoginButton_Click;
 
             //facebookImage.Click += FacebookImage_Click;
-            googleImage.Click += GoogleImage_Click;
+            signinButton.Click += SigninButton_Click;
             signUpTextView.Click += SignUpTextView_Click;
         }
 
@@ -128,19 +159,13 @@ namespace XamarinAndroidTraining.Activities
             StartActivity(intent);
         }
 
-        private void GoogleImage_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(GoogleWebViewActivity));
-            StartActivity(intent);
-        }
-
+       
         protected override void OnPause()
         {
             base.OnPause();
             forgotPassword.Click -= ForgotPassword_Click;
             loginButton.Click -= LoginButton_Click;
             //facebookImage.Click -= FacebookImage_Click;
-            googleImage.Click -= GoogleImage_Click;
             signUpTextView.Click -= SignUpTextView_Click;
 
         }
@@ -150,6 +175,9 @@ namespace XamarinAndroidTraining.Activities
         //    Intent intent = new Intent(this, typeof(FacebookWebViewActivity));
         //    StartActivity(intent);
         //}
+
+
+        #region normal login
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
@@ -259,8 +287,9 @@ namespace XamarinAndroidTraining.Activities
             return !TextUtils.IsEmpty(pass) && pattern.Matcher(pass).Matches();
         }
 
+#endregion
 
-
+        #region facebook login
         public void OnCancel() 
         {
         
@@ -306,8 +335,18 @@ namespace XamarinAndroidTraining.Activities
         }
         protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
         {
+            
             base.OnActivityResult(requestCode, resultCode, data);
             fBCallManager.OnActivityResult(requestCode, (int)resultCode, data);
+            if (requestCode == 1)
+            {
+                GoogleSignInResult result = Auth.GoogleSignInApi.GetSignInResultFromIntent(data);
+                if (result.IsSuccess)
+                {
+                    GoogleSignInAccount account = result.SignInAccount;
+                    LoginWithFirebase(account);
+                }
+            }
         }
 
         protected override void OnDestroy()
@@ -336,5 +375,118 @@ namespace XamarinAndroidTraining.Activities
             }
 
         }
+
+
+        #endregion
+
+
+
+        #region google login
+        private FirebaseAuth GetFirebaseAuth()
+        {
+            var app = FirebaseApp.InitializeApp(this);
+            FirebaseAuth mAuth;
+
+            if (app == null)
+            {
+                var options = new FirebaseOptions.Builder()
+                    .SetProjectId("xamarinandroidtraining-279113")
+                    .SetApplicationId("xamarinandroidtraining-279113")
+                    .SetApiKey("AIzaSyALH9EDGO6p0psNvu4cDz826IkYIeW33j4")
+                    .SetDatabaseUrl("https://xamarinandroidtraining-279113.firebaseio.com")
+                    .SetStorageBucket("xamarinandroidtraining-279113.appspot.com")
+                    .Build();
+
+                app = FirebaseApp.InitializeApp(this, options);
+                mAuth = FirebaseAuth.Instance;
+            }
+            else
+            {
+                mAuth = FirebaseAuth.Instance;
+            }
+            return mAuth;
+        }
+
+        private void SigninButton_Click(object sender, System.EventArgs e)
+        {
+            UpdateUI();
+            if (firebaseAuth.CurrentUser == null)
+            {
+                var intent = Auth.GoogleSignInApi.GetSignInIntent(googleApiClient);
+                StartActivityForResult(intent, 1);
+            }
+            else
+            {
+                firebaseAuth.SignOut();
+                UpdateUI();
+            }
+
+        }
+
+        //protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        //{
+        //    base.OnActivityResult(requestCode, resultCode, data);
+
+        //    if (requestCode == 1)
+        //    {
+        //        GoogleSignInResult result = Auth.GoogleSignInApi.GetSignInResultFromIntent(data);
+        //        if (result.IsSuccess)
+        //        {
+        //            GoogleSignInAccount account = result.SignInAccount;
+        //            LoginWithFirebase(account);
+        //        }
+        //    }
+        //}
+
+        private void LoginWithFirebase(GoogleSignInAccount account)
+        {
+            var credentials = GoogleAuthProvider.GetCredential(account.IdToken, null);
+            firebaseAuth.SignInWithCredential(credentials).AddOnSuccessListener(this)
+                .AddOnFailureListener(this);
+        }
+
+
+
+
+        void IOnFailureListener.OnFailure(Java.Lang.Exception e)
+        {
+            Toast.MakeText(this, "Login Failed", ToastLength.Short).Show();
+            UpdateUI();
+        }
+
+
+        string emailText, displayNameText;
+
+        void IOnSuccessListener.OnSuccess(Java.Lang.Object result)
+        {
+            Intent intent = new Intent(this, typeof(ProfileActivity));
+            displayNameText = firebaseAuth.CurrentUser.DisplayName;
+            emailText =firebaseAuth.CurrentUser.Email;
+
+            Toast.MakeText(this, "Login successful", ToastLength.Short).Show();
+            UpdateUI();
+            intent.PutExtra("name", displayNameText);
+            intent.PutExtra("emailId", emailText);
+
+
+            StartActivity(intent);
+        }
+
+        void UpdateUI()
+        {
+            if (firebaseAuth.CurrentUser != null)
+            {
+                
+            }
+            else
+            {
+                displayNameText = "";
+                emailText= "";
+            }
+        }
+        #endregion
+
+
+
     }
 }
