@@ -5154,127 +5154,154 @@ namespace XamarinAndroidTraining
 			public const int cSharp = 2131558444;
 			
 			// aapt resource value: 0x7F0D0059
-			public const int dontHaveAccount = 2131558489;
+			public const int default_web_client_id = 2131558489;
 			
 			// aapt resource value: 0x7F0D005A
-			public const int dotNet = 2131558490;
+			public const int dontHaveAccount = 2131558490;
 			
 			// aapt resource value: 0x7F0D005B
-			public const int emailId = 2131558491;
+			public const int dotNet = 2131558491;
 			
 			// aapt resource value: 0x7F0D005C
-			public const int fab_transformation_scrim_behavior = 2131558492;
+			public const int emailId = 2131558492;
 			
 			// aapt resource value: 0x7F0D005D
-			public const int fab_transformation_sheet_behavior = 2131558493;
+			public const int fab_transformation_scrim_behavior = 2131558493;
 			
 			// aapt resource value: 0x7F0D005E
-			public const int facebook_app_id = 2131558494;
+			public const int fab_transformation_sheet_behavior = 2131558494;
 			
 			// aapt resource value: 0x7F0D005F
-			public const int firstName = 2131558495;
+			public const int facebook_app_id = 2131558495;
 			
 			// aapt resource value: 0x7F0D0060
-			public const int forgotPassword = 2131558496;
+			public const int fcm_fallback_notification_channel_label = 2131558496;
 			
 			// aapt resource value: 0x7F0D0061
-			public const int forgot_Password = 2131558497;
+			public const int firebase_database_url = 2131558497;
 			
 			// aapt resource value: 0x7F0D0062
-			public const int gender = 2131558498;
+			public const int firstName = 2131558498;
 			
 			// aapt resource value: 0x7F0D0063
-			public const int hide_bottom_view_on_scroll_behavior = 2131558499;
+			public const int forgotPassword = 2131558499;
 			
 			// aapt resource value: 0x7F0D0064
-			public const int iReceipt = 2131558500;
+			public const int forgot_Password = 2131558500;
 			
 			// aapt resource value: 0x7F0D0065
-			public const int lastName = 2131558501;
+			public const int gcm_defaultSenderId = 2131558501;
 			
 			// aapt resource value: 0x7F0D0066
-			public const int loginButton = 2131558502;
+			public const int gender = 2131558502;
 			
 			// aapt resource value: 0x7F0D0067
-			public const int loginViaOTP = 2131558503;
+			public const int google_api_key = 2131558503;
 			
 			// aapt resource value: 0x7F0D0068
-			public const int messenger_send_button_text = 2131558504;
+			public const int google_app_id = 2131558504;
 			
 			// aapt resource value: 0x7F0D0069
-			public const int mtrl_chip_close_icon_content_description = 2131558505;
+			public const int google_crash_reporting_api_key = 2131558505;
 			
 			// aapt resource value: 0x7F0D006A
-			public const int nextButton = 2131558506;
+			public const int google_storage_bucket = 2131558506;
 			
 			// aapt resource value: 0x7F0D006B
-			public const int password = 2131558507;
+			public const int hide_bottom_view_on_scroll_behavior = 2131558507;
 			
 			// aapt resource value: 0x7F0D006C
-			public const int password_toggle_content_description = 2131558508;
+			public const int iReceipt = 2131558508;
 			
 			// aapt resource value: 0x7F0D006D
-			public const int path_password_eye = 2131558509;
+			public const int lastName = 2131558509;
 			
 			// aapt resource value: 0x7F0D006E
-			public const int path_password_eye_mask_strike_through = 2131558510;
+			public const int loginButton = 2131558510;
 			
 			// aapt resource value: 0x7F0D006F
-			public const int path_password_eye_mask_visible = 2131558511;
+			public const int loginViaOTP = 2131558511;
 			
 			// aapt resource value: 0x7F0D0070
-			public const int path_password_strike_through = 2131558512;
+			public const int messenger_send_button_text = 2131558512;
 			
 			// aapt resource value: 0x7F0D0071
-			public const int phoneNumber = 2131558513;
+			public const int mtrl_chip_close_icon_content_description = 2131558513;
 			
 			// aapt resource value: 0x7F0D0072
-			public const int radioFemale = 2131558514;
+			public const int nextButton = 2131558514;
 			
 			// aapt resource value: 0x7F0D0073
-			public const int radioMale = 2131558515;
+			public const int password = 2131558515;
 			
 			// aapt resource value: 0x7F0D0074
-			public const int registrationPageHeading = 2131558516;
+			public const int password_toggle_content_description = 2131558516;
 			
 			// aapt resource value: 0x7F0D0075
-			public const int resetButton = 2131558517;
+			public const int path_password_eye = 2131558517;
 			
 			// aapt resource value: 0x7F0D0076
-			public const int search_menu_title = 2131558518;
+			public const int path_password_eye_mask_strike_through = 2131558518;
 			
 			// aapt resource value: 0x7F0D0077
-			public const int signUp = 2131558519;
+			public const int path_password_eye_mask_visible = 2131558519;
 			
 			// aapt resource value: 0x7F0D0078
-			public const int skills = 2131558520;
+			public const int path_password_strike_through = 2131558520;
 			
 			// aapt resource value: 0x7F0D0079
-			public const int status_bar_notification_info_overflow = 2131558521;
+			public const int phoneNumber = 2131558521;
 			
 			// aapt resource value: 0x7F0D007A
-			public const int submitButton = 2131558522;
+			public const int project_id = 2131558522;
 			
 			// aapt resource value: 0x7F0D007B
-			public const int submitFPButton = 2131558523;
+			public const int radioFemale = 2131558523;
 			
 			// aapt resource value: 0x7F0D007C
-			public const int welcomeBack = 2131558524;
+			public const int radioMale = 2131558524;
 			
 			// aapt resource value: 0x7F0D007D
-			public const int welcomeDashboard = 2131558525;
+			public const int registrationPageHeading = 2131558525;
 			
 			// aapt resource value: 0x7F0D007E
-			public const int welcomeProfile = 2131558526;
+			public const int resetButton = 2131558526;
 			
 			// aapt resource value: 0x7F0D007F
-			public const int xamarinAndroid = 2131558527;
+			public const int search_menu_title = 2131558527;
 			
 			// aapt resource value: 0x7F0D0080
-			public const int xamarinForms = 2131558528;
+			public const int signUp = 2131558528;
 			
 			// aapt resource value: 0x7F0D0081
-			public const int xamarinIOS = 2131558529;
+			public const int skills = 2131558529;
+			
+			// aapt resource value: 0x7F0D0082
+			public const int status_bar_notification_info_overflow = 2131558530;
+			
+			// aapt resource value: 0x7F0D0083
+			public const int submitButton = 2131558531;
+			
+			// aapt resource value: 0x7F0D0084
+			public const int submitFPButton = 2131558532;
+			
+			// aapt resource value: 0x7F0D0085
+			public const int welcomeBack = 2131558533;
+			
+			// aapt resource value: 0x7F0D0086
+			public const int welcomeDashboard = 2131558534;
+			
+			// aapt resource value: 0x7F0D0087
+			public const int welcomeProfile = 2131558535;
+			
+			// aapt resource value: 0x7F0D0088
+			public const int xamarinAndroid = 2131558536;
+			
+			// aapt resource value: 0x7F0D0089
+			public const int xamarinForms = 2131558537;
+			
+			// aapt resource value: 0x7F0D008A
+			public const int xamarinIOS = 2131558538;
 			
 			static String()
 			{

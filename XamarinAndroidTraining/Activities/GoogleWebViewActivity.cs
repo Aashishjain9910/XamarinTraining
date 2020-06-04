@@ -23,10 +23,11 @@ using Android.Gms.Auth.Api;
 using Firebase.Auth;
 using Firebase;
 using Java.Lang;
+using Firebase.Iid;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "GoogleWebViewActivity", MainLauncher =false)]
+    [Activity(Label = "GoogleWebViewActivity", MainLauncher =true)]
     public class GoogleWebViewActivity : Activity, IOnSuccessListener, IOnFailureListener    /* GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener*/
     {
         #region
@@ -48,7 +49,6 @@ namespace XamarinAndroidTraining.Activities
         Button signinButton;
         TextView displayNameText;
         TextView emailText;
-        TextView photourlText;
 
         GoogleSignInOptions gso;
         GoogleApiClient googleApiClient;
@@ -98,8 +98,16 @@ namespace XamarinAndroidTraining.Activities
             firebaseAuth = GetFirebaseAuth();
             UpdateUI();
 
+           
+
+            signinButton.Click += delegate
+            {
+                Log.Debug("TOKEN", "Instance Id Token: " + FirebaseInstanceId.Instance.Token);
+            };
+
         }
 
+        
 
         private FirebaseAuth GetFirebaseAuth()
         {
@@ -177,9 +185,15 @@ namespace XamarinAndroidTraining.Activities
         {
             displayNameText.Text = "Display Name: " + firebaseAuth.CurrentUser.DisplayName;
             emailText.Text = "Email: " + firebaseAuth.CurrentUser.Email;
-
+            string dpName, email;
+            dpName = displayNameText.Text;
+            email = emailText.Text;
             Toast.MakeText(this, "Login successful", ToastLength.Short).Show();
             UpdateUI();
+            Intent intent = new Intent(this, typeof(ProfileActivity));
+            intent.PutExtra("name", dpName);
+            intent.PutExtra("emailId", email);
+            StartActivity(intent);
         }
 
         void UpdateUI()

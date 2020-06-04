@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1037739809912",
+    "firebase_url": "https://xamarinandroidtraining-279113.firebaseio.com",
+    "project_id": "xamarinandroidtraining-279113",
+    "storage_bucket": "xamarinandroidtraining-279113.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037739809912:android:9784a38d20882b77a0e18d",
+        "android_client_info": {
+          "package_name": "com.companyname.xamarinandroidtraining"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037739809912-lujoj1fsmh5kdbk4qocbcqcge5csprm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALH9EDGO6p0psNvu4cDz826IkYIeW33j4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037739809912-lujoj1fsmh5kdbk4qocbcqcge5csprm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

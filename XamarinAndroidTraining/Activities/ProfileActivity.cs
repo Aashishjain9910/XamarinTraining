@@ -32,7 +32,7 @@ namespace XamarinAndroidTraining.Activities
 
             mprofile = FindViewById<ProfilePictureView>(Resource.Id.ImgPro);
             TxtName = FindViewById<TextView>(Resource.Id.TxtName);
-            emailText = FindViewById<TextView>(Resource.Id.emailText);
+            emailText = FindViewById<TextView>(Resource.Id.EmailText);
 
 
            usrName  = Intent.GetStringExtra("name");

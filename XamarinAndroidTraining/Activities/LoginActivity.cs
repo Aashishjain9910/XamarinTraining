@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -18,7 +17,6 @@ using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 using Xamarin.Facebook.Login.Widget;
 using XamarinAndroidTraining.models;
-
 using Android.Gms.Common.Apis;
 using Android.Gms.Tasks;
 using Android.Support.V7.App;
@@ -26,13 +24,13 @@ using Android.Gms.Auth.Api.SignIn;
 using Android.Gms.Auth.Api;
 using Firebase.Auth;
 using Firebase;
-
 using Pattern = Java.Util.Regex.Pattern;
 using AlertDialog = Android.App.AlertDialog;
 
+
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "LoginActivity", MainLauncher=true)]
+    [Activity(Label = "LoginActivity", MainLauncher = false)]
     public class LoginActivity : Activity, IFacebookCallback, IOnSuccessListener, IOnFailureListener
     {
         EditText emailEditText, passwordEditText;
@@ -40,6 +38,7 @@ namespace XamarinAndroidTraining.Activities
         Button facebookImage;
 
         string abcd;
+
 
         ProfilePictureView mprofile;
         private MyProfileTracker profileTracker;
@@ -119,17 +118,10 @@ namespace XamarinAndroidTraining.Activities
             googleApiClient.Connect();
 
             firebaseAuth = GetFirebaseAuth();
-            UpdateUI();
-
-
-
             signUpTextView = FindViewById<TextView>(Resource.Id.signUpTextView);
 
             loginButton = FindViewById<Button>(Resource.Id.LoginButton);
             dialogBuilder = new AlertDialog.Builder(this);
-           
-
-
 
         }
 
@@ -159,15 +151,16 @@ namespace XamarinAndroidTraining.Activities
             StartActivity(intent);
         }
 
-       
+
         protected override void OnPause()
         {
+
             base.OnPause();
             forgotPassword.Click -= ForgotPassword_Click;
             loginButton.Click -= LoginButton_Click;
             //facebookImage.Click -= FacebookImage_Click;
             signUpTextView.Click -= SignUpTextView_Click;
-
+            signinButton.Click -= SigninButton_Click;
         }
 
         //private void FacebookImage_Click(object sender, EventArgs e)
@@ -287,20 +280,31 @@ namespace XamarinAndroidTraining.Activities
             return !TextUtils.IsEmpty(pass) && pattern.Matcher(pass).Matches();
         }
 
-#endregion
+        #endregion
 
         #region facebook login
-        public void OnCancel() 
+        public void OnCancel()
         {
-        
+
         }
-        public void OnError(FacebookException p0) 
+        public void OnError(FacebookException p0)
         {
-        
+
         }
         public void OnSuccess(Java.Lang.Object p0)
         {
-            
+            if (code == 1)
+            {
+
+                nameText = firebaseAuth.CurrentUser.DisplayName;
+                email = firebaseAuth.CurrentUser.Email;
+                Toast.MakeText(this, "Login successful", ToastLength.Short).Show();
+
+                Intent intent = new Intent(this, typeof(ProfileActivity));
+                intent.PutExtra("name", nameText);
+                intent.PutExtra("emailId", email);
+                StartActivity(intent);
+            }
         }
         void profileTracker_onProfileChanged(object sender, OnProfileChangedEventArgs e)
         {
@@ -310,36 +314,36 @@ namespace XamarinAndroidTraining.Activities
                 {
                     abcd = e.mProfile.Name;
                     string dp = e.mProfile.Id;
-                    //TxtName.Text = e.mProfile.Name;
-                    //mprofile.ProfileId = e.mProfile.Id;
-                    //facebookImage.Text = "Logout";
                     Intent intent = new Intent(this, typeof(ProfileActivity));
-                    //intent.PutExtra("pId", mprofile.ProfileId);
                     intent.PutExtra("name", abcd);
                     intent.PutExtra("dpId", dp);
-                    
-
                     StartActivity(intent);
                 }
                 catch (Java.Lang.Exception ex) { }
             }
             //else
             //{
-                
+
             //    //TxtName.Text = "Name";
             //    //mprofile.ProfileId = null;
             //    //facebookImage.Text = "Logout";
             //}
 
-           
+
         }
+        int code;
         protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
         {
-            
+
             base.OnActivityResult(requestCode, resultCode, data);
-            fBCallManager.OnActivityResult(requestCode, (int)resultCode, data);
-            if (requestCode == 1)
+            if (requestCode == 64206)
             {
+                code = requestCode;
+                fBCallManager.OnActivityResult(requestCode, (int)resultCode, data);
+            }
+            else if (requestCode == 1)
+            {
+                code = requestCode;
                 GoogleSignInResult result = Auth.GoogleSignInApi.GetSignInResultFromIntent(data);
                 if (result.IsSuccess)
                 {
@@ -409,16 +413,17 @@ namespace XamarinAndroidTraining.Activities
 
         private void SigninButton_Click(object sender, System.EventArgs e)
         {
-            UpdateUI();
+
             if (firebaseAuth.CurrentUser == null)
             {
-                var intent = Auth.GoogleSignInApi.GetSignInIntent(googleApiClient);
-                StartActivityForResult(intent, 1);
+                var intents = Auth.GoogleSignInApi.GetSignInIntent(googleApiClient);
+                StartActivityForResult(intents, 1);
+
             }
             else
             {
                 firebaseAuth.SignOut();
-                UpdateUI();
+
             }
 
         }
@@ -451,39 +456,28 @@ namespace XamarinAndroidTraining.Activities
         void IOnFailureListener.OnFailure(Java.Lang.Exception e)
         {
             Toast.MakeText(this, "Login Failed", ToastLength.Short).Show();
-            UpdateUI();
+
         }
 
 
-        string emailText, displayNameText;
+        string email, nameText;
 
-        void IOnSuccessListener.OnSuccess(Java.Lang.Object result)
-        {
-            Intent intent = new Intent(this, typeof(ProfileActivity));
-            displayNameText = firebaseAuth.CurrentUser.DisplayName;
-            emailText =firebaseAuth.CurrentUser.Email;
+        //void IOnSuccessListener.OnSuccess(Java.Lang.Object result)
+        //{
 
-            Toast.MakeText(this, "Login successful", ToastLength.Short).Show();
-            UpdateUI();
-            intent.PutExtra("name", displayNameText);
-            intent.PutExtra("emailId", emailText);
+        //    //displayNameText.Text = firebaseAuth.CurrentUser.DisplayName;
+        //    //emailText.Text = firebaseAuth.CurrentUser.Email;
+        //    //nameText = displayNameText.Text;
+        //    //email = emailText.Text;
+        //    //Toast.MakeText(this, "Login successful", ToastLength.Short).Show();
+
+        //    //Intent intent = new Intent(this, typeof(ProfileActivity));
+        //    //intent.PutExtra("name", nameText);
+        //    //intent.PutExtra("emailId", email);
+        //    //StartActivity(intent);
+        //}
 
 
-            StartActivity(intent);
-        }
-
-        void UpdateUI()
-        {
-            if (firebaseAuth.CurrentUser != null)
-            {
-                
-            }
-            else
-            {
-                displayNameText = "";
-                emailText= "";
-            }
-        }
         #endregion
 
 

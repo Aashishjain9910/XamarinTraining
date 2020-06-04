@@ -5,7 +5,19 @@
 
 	<application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:usesCleartextTraffic="true" android:theme="@style/AppTheme">
 		<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
-	<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+				  android:exported="false"/>
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+				  android:exported="true"
+ 				  android:permission="com.google.android.c2dm.permission.SEND">
+
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+				<category android:name="${applicationId}"/>
+			</intent-filter>
+		</receiver>
 	</application>
 
 	<uses-permission android:name="android.permission.INTERNET" />
