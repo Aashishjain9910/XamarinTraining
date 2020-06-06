@@ -24,10 +24,11 @@ using Firebase.Auth;
 using Firebase;
 using Java.Lang;
 using Firebase.Iid;
+using Xamarin.Auth;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "GoogleWebViewActivity", MainLauncher =true)]
+    [Activity(Label = "GoogleWebViewActivity", MainLauncher = true)]
     public class GoogleWebViewActivity : Activity, IOnSuccessListener, IOnFailureListener    /* GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener*/
     {
         #region
@@ -47,6 +48,7 @@ namespace XamarinAndroidTraining.Activities
         #endregion
 
         Button signinButton;
+        Button signInTwitter;
         TextView displayNameText;
         TextView emailText;
 
@@ -63,6 +65,11 @@ namespace XamarinAndroidTraining.Activities
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Google_WebView);
+
+
+            signInTwitter = FindViewById<Button>(Resource.Id.signInTwitter);
+            signInTwitter.Click += delegate { LoginTwitter(); };
+
 
             #region
             //mGsignBtn = FindViewById<SignInButton>(Resource.Id.sign_in_button);
@@ -98,7 +105,7 @@ namespace XamarinAndroidTraining.Activities
             firebaseAuth = GetFirebaseAuth();
             UpdateUI();
 
-           
+
 
             signinButton.Click += delegate
             {
@@ -107,7 +114,30 @@ namespace XamarinAndroidTraining.Activities
 
         }
 
-        
+        private void LoginTwitter()
+        {
+            OAuth1Authenticator auth = new OAuth1Authenticator(
+                consumerKey: "rTkBXip6Mx0ViCgx42BzJUQNR",
+                consumerSecret: "ea0N8wzdVr5F3u59y0bL9h0d4wGF81EFSjHaOx9oQGQrYmKymx",
+                requestTokenUrl:new Uri("https://api.twitter.com/oauth/request_token"),
+                authorizeUrl:new Uri("https://api.twitter.com/oauth/authorize"),
+                accessTokenUrl:new Uri("https://api.twitter.com/oauth/access_token"),
+               callbackUrl:new Uri("https://mobile.twitter.com")
+
+
+            );
+
+            auth.Completed += twitter_auth_Completed;
+            StartActivity(auth.GetUI(this));
+        }
+
+        private void twitter_auth_Completed(object sender, AuthenticatorCompletedEventArgs eventArgs)
+        {
+            if (eventArgs.IsAuthenticated)
+            {
+                Toast.MakeText(this,"LoggedIn with Twitter", ToastLength.Long).Show();
+            }
+        }
 
         private FirebaseAuth GetFirebaseAuth()
         {
@@ -201,7 +231,7 @@ namespace XamarinAndroidTraining.Activities
             if (firebaseAuth.CurrentUser != null)
             {
                 signinButton.Text = "Sign Out";
-                
+
             }
             else
             {
