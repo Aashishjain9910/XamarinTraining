@@ -52,6 +52,10 @@ namespace XamarinAndroidTraining.Activities
         TextView displayNameText;
         TextView emailText;
 
+
+        Button btnGetData;
+        TextView msgText;
+
         GoogleSignInOptions gso;
         GoogleApiClient googleApiClient;
 
@@ -66,12 +70,21 @@ namespace XamarinAndroidTraining.Activities
 
             SetContentView(Resource.Layout.Google_WebView);
 
+            msgText = FindViewById<TextView>(Resource.Id.msgText);
+            btnGetData = FindViewById<Button>(Resource.Id.tokenButton);
+            IsPlayServicesAvailable();
 
+            btnGetData.Click += delegate
+            {
+                Log.Debug("Token", "Instance Id Token: " + FirebaseInstanceId.Instance.Token);
+            };
+
+            #region twitter
             signInTwitter = FindViewById<Button>(Resource.Id.signInTwitter);
             signInTwitter.Click += delegate { LoginTwitter(); };
+            #endregion
 
-
-            #region
+            #region comments
             //mGsignBtn = FindViewById<SignInButton>(Resource.Id.sign_in_button);
             //TxtName = FindViewById<TextView>(Resource.Id.TxtName);
             //ImgProfile = FindViewById<ImageView>(Resource.Id.ImgProfile);
@@ -88,6 +101,8 @@ namespace XamarinAndroidTraining.Activities
             //mGoogleApiClient = builder.Build();
             #endregion
 
+
+            #region google
             signinButton = (Button)FindViewById(Resource.Id.signinButton);
             displayNameText = (TextView)FindViewById(Resource.Id.displayNameText);
             emailText = (TextView)FindViewById(Resource.Id.emailText);
@@ -112,8 +127,33 @@ namespace XamarinAndroidTraining.Activities
                 Log.Debug("TOKEN", "Instance Id Token: " + FirebaseInstanceId.Instance.Token);
             };
 
+#endregion
+
         }
 
+        private bool IsPlayServicesAvailable()
+        {
+            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+            if (resultCode != ConnectionResult.Success)
+            {
+                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
+                {
+                    msgText.Text = GoogleApiAvailability.Instance.GetErrorString(resultCode);
+                }
+                else
+                {
+                    msgText.Text = "Google Play services are not available.";
+                }
+                return false;
+            }
+            else
+                msgText.Text = "Google play services are available";
+            return true;
+        }
+
+
+
+        #region twitter
         private void LoginTwitter()
         {
             OAuth1Authenticator auth = new OAuth1Authenticator(
@@ -122,7 +162,7 @@ namespace XamarinAndroidTraining.Activities
                 requestTokenUrl:new Uri("https://api.twitter.com/oauth/request_token"),
                 authorizeUrl:new Uri("https://api.twitter.com/oauth/authorize"),
                 accessTokenUrl:new Uri("https://api.twitter.com/oauth/access_token"),
-               callbackUrl:new Uri("https://mobile.twitter.com")
+               callbackUrl:new Uri("https://xamarinandroidtraining-279113.firebaseapp.com/__/auth/handler")
 
 
             );
@@ -136,8 +176,13 @@ namespace XamarinAndroidTraining.Activities
             if (eventArgs.IsAuthenticated)
             {
                 Toast.MakeText(this,"LoggedIn with Twitter", ToastLength.Long).Show();
+                
             }
         }
+        #endregion
+
+
+        #region google
 
         private FirebaseAuth GetFirebaseAuth()
         {
@@ -366,7 +411,7 @@ namespace XamarinAndroidTraining.Activities
         //{
         //    throw new NotImplementedException();
         //}
-
+        #endregion
 
     }
 }

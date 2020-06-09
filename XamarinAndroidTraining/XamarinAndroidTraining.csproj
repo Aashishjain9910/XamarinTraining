@@ -153,6 +153,9 @@
     <PackageReference Include="Xamarin.GooglePlayServices.Auth">
       <Version>71.1600.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>71.1610.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices.Plus">
       <Version>71.1600.1</Version>
     </PackageReference>
@@ -284,6 +287,7 @@
     <AndroidResource Include="Resources\layout\CameraLayout.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\twitter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

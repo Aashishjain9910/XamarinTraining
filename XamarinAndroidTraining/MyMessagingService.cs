@@ -2,70 +2,64 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V4.App;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.Gms.Common;
 using Firebase.Messaging;
+using Android.Support.V4.App;
 
-namespace XamarinAndroidTraining
+namespace XamarinAndroidTraining.Activities
 {
     [Service]
-    [IntentFilter(new[] { "com.google.firebase.Messaging_EVENT" })]
-    public class MyMessagingService:FirebaseMessagingService
+    [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+    [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
+    
+    public class MyMessagingService : FirebaseMessagingService
     {
-        private readonly string NOTIFICATION_CHANNEL_ID= "com.companyname.xamarinandroidtraining";
-
+        const string TAG = "MyFirebaseMsgService";
         public override void OnMessageReceived(RemoteMessage message)
         {
-            if (!message.Data.GetEnumerator().MoveNext())
-                SendNotification(message.GetNotification().Title, message.GetNotification().Body);
-
-            else
-                SendNotification(message.Data);
-        }
-
-        private void SendNotification(IDictionary<string, string> data)
-        {
-            string title, body;
-            data.TryGetValue("title", out title);
-            data.TryGetValue("body", out body);
-
-            SendNotification(title, body);
-        
-        
-        }
-
-        private void SendNotification(string title, string body)
-        {
-            NotificationManager notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
-
-            if (Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.O)
+            Log.Debug("/////////////////", "////////////////////////");
+            foreach (var li in message.Data.Values)
             {
-                NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "Notification Channel", Android.App.NotificationImportance.Default);
-
-                notificationChannel.Description = "XAmarin.Android Training ";
-                notificationChannel.SetVibrationPattern(new long[] { 0, 1000, 500, 1000 });
-
-                notificationManager.CreateNotificationChannel(notificationChannel);
+                Log.Debug("/////////////////", li);
 
             }
+            //   Log.Debug("****",message.Data.Values.ToString());  
+            Log.Debug("/////////////////", "////////////////////////");
+            Log.Debug(TAG, "From: " + message.From);
+            Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
+            var body = message.GetNotification().Body;
+            SendNotification(body, message.Data);
+        }
+        void SendNotification(string messageBody, IDictionary<string, string> data)
+        {
+            var intent = new Intent(Application.Context, typeof(DashboardActivity));
+            intent.AddFlags(ActivityFlags.SingleTop);
+            foreach (var key in data.Keys)
+            {
+                intent.PutExtra(key, data[key]);
+            }
 
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
+            var pendingIntent = PendingIntent.GetActivity(Application.Context,
+                                                          DashboardActivity.NOTIFICATION_ID,
+                                                          intent,
+                                                          PendingIntentFlags.UpdateCurrent);
 
-            notificationBuilder.SetAutoCancel(true)
-                .SetDefaults(-1)
-                .SetWhen(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds())
-                .SetContentTitle(title)
-                .SetContentText(body)
-                .SetContentInfo("info");
+            var notificationBuilder = new NotificationCompat.Builder(Application.Context, DashboardActivity.CHANNEL_ID)
+                                      .SetSmallIcon(Resource.Drawable.User)
+                                      .SetContentTitle("FCM Message")
+                                      .SetContentText(messageBody)
+                                      .SetAutoCancel(true)
+                                      .SetContentIntent(pendingIntent);
 
-            notificationManager.Notify(new Random().Next(), notificationBuilder.Build());
-
+            var notificationManager = NotificationManagerCompat.From(Application.Context);
+            notificationManager.Notify(DashboardActivity.NOTIFICATION_ID, notificationBuilder.Build());
         }
     }
 }

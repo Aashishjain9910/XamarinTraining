@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 
@@ -14,15 +15,21 @@ using Android.Widget;
 namespace XamarinAndroidTraining.Activities
 {
     [Activity(Label = "DashboardActivity", Theme = "@style/Theme.DesignDemo")]
-    public class DashboardActivity : Activity
+    public class DashboardActivity : AppCompatActivity
     {
         //static int requestId = 1;
         //Button nextButton;
         //TextView msgText;
         Button camera, gallery, contacts, listView, login;
+        static readonly string TAG = "MainActivity";
+        internal static readonly string CHANNEL_ID = "my_notification_channel";
+        internal static readonly int NOTIFICATION_ID = 100;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            
+
+
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.DashboardLayout);
             //msgText = FindViewById<TextView>(Resource.Id.msgText);
@@ -34,8 +41,33 @@ namespace XamarinAndroidTraining.Activities
             listView = FindViewById<Button>(Resource.Id.listView);
             login = FindViewById<Button>(Resource.Id.login);
 
-
+            CreateNotificationChannel();
         }
+
+
+        #region notification
+        void CreateNotificationChannel()
+        {
+            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+            {
+                // Notification channels are new in API 26 (and not a part of the
+                // support library). There is no need to create a notification
+                // channel on older versions of Android.
+                return;
+            }
+
+            var channel = new NotificationChannel(CHANNEL_ID,
+                                                  "FCM Notifications",
+                                                  NotificationImportance.Default)
+            {
+
+                Description = "Firebase Cloud Messages appear in this channel"
+            };
+
+            var notificationManager = (NotificationManager)GetSystemService(Android.Content.Context.NotificationService);
+            notificationManager.CreateNotificationChannel(channel);
+        }
+        #endregion
 
 
         protected override void OnResume()

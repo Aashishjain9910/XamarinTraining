@@ -26,7 +26,7 @@ using Firebase.Auth;
 using Firebase;
 using Pattern = Java.Util.Regex.Pattern;
 using AlertDialog = Android.App.AlertDialog;
-
+using Xamarin.Auth;
 
 namespace XamarinAndroidTraining.Activities
 {
@@ -36,15 +36,14 @@ namespace XamarinAndroidTraining.Activities
         EditText emailEditText, passwordEditText;
         Button loginButton;
         Button facebookImage;
+        Button twitterButton;
 
         string abcd;
-
-
-        ProfilePictureView mprofile;
         private MyProfileTracker profileTracker;
         private ICallbackManager fBCallManager;
 
-        Button signinButton;
+
+        Button googleButton;
         GoogleSignInOptions gso;
         GoogleApiClient googleApiClient;
 
@@ -62,20 +61,20 @@ namespace XamarinAndroidTraining.Activities
             FacebookSdk.SdkInitialize(this.ApplicationContext);
             SetContentView(Resource.Layout.Login_Layout);
 
+            #region normal login
             emailEditText = FindViewById<EditText>(Resource.Id.emailEditText);
             string emailString = Intent.GetStringExtra("emailValue");
             emailEditText.Text = emailString;
-
             username = Intent.GetStringExtra("userFirstNameValue");
-
             passwordEditText = FindViewById<EditText>(Resource.Id.passwordEditText);
             password = Intent.GetStringExtra("passwordValue");
-
-
             forgotPassword = FindViewById<TextView>(Resource.Id.forgotPasswordTextView);
             TxtName = FindViewById<TextView>(Resource.Id.forgotPasswordTextView);
             phonenumber = Intent.GetStringExtra("phoneNumberValue");
 
+            loginButton = FindViewById<Button>(Resource.Id.LoginButton);
+            dialogBuilder = new AlertDialog.Builder(this);
+            #endregion
 
 
             #region facebookbutton
@@ -106,8 +105,8 @@ namespace XamarinAndroidTraining.Activities
             #endregion
 
 
-
-            signinButton = FindViewById<Button>(Resource.Id.googleImage);
+            #region googlebutton
+            googleButton = FindViewById<Button>(Resource.Id.googleImage);
             gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
                 .RequestIdToken("1037739809912-lujoj1fsmh5kdbk4qocbcqcge5csprm6.apps.googleusercontent.com")
                 .RequestEmail()
@@ -119,12 +118,19 @@ namespace XamarinAndroidTraining.Activities
 
             firebaseAuth = GetFirebaseAuth();
             signUpTextView = FindViewById<TextView>(Resource.Id.signUpTextView);
+            #endregion
 
-            loginButton = FindViewById<Button>(Resource.Id.LoginButton);
-            dialogBuilder = new AlertDialog.Builder(this);
+
+            #region twitterbutton
+            twitterButton = FindViewById<Button>(Resource.Id.twitterImage);
+            twitterButton.Click += delegate { LoginTwitter(); };
+
+            #endregion
 
         }
 
+
+        #region normal login
         protected override void OnResume()
         {
             base.OnResume();
@@ -132,7 +138,7 @@ namespace XamarinAndroidTraining.Activities
             loginButton.Click += LoginButton_Click;
 
             //facebookImage.Click += FacebookImage_Click;
-            signinButton.Click += SigninButton_Click;
+            googleButton.Click += googleButton_Click;
             signUpTextView.Click += SignUpTextView_Click;
         }
 
@@ -160,17 +166,12 @@ namespace XamarinAndroidTraining.Activities
             loginButton.Click -= LoginButton_Click;
             //facebookImage.Click -= FacebookImage_Click;
             signUpTextView.Click -= SignUpTextView_Click;
-            signinButton.Click -= SigninButton_Click;
+            googleButton.Click -= googleButton_Click;
         }
 
-        //private void FacebookImage_Click(object sender, EventArgs e)
-        //{
-        //    Intent intent = new Intent(this, typeof(FacebookWebViewActivity));
-        //    StartActivity(intent);
-        //}
 
 
-        #region normal login
+        
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
@@ -282,6 +283,7 @@ namespace XamarinAndroidTraining.Activities
 
         #endregion
 
+
         #region facebook login
         public void OnCancel()
         {
@@ -384,7 +386,6 @@ namespace XamarinAndroidTraining.Activities
         #endregion
 
 
-
         #region google login
         private FirebaseAuth GetFirebaseAuth()
         {
@@ -411,7 +412,7 @@ namespace XamarinAndroidTraining.Activities
             return mAuth;
         }
 
-        private void SigninButton_Click(object sender, System.EventArgs e)
+        private void googleButton_Click(object sender, System.EventArgs e)
         {
 
             if (firebaseAuth.CurrentUser == null)
@@ -481,6 +482,36 @@ namespace XamarinAndroidTraining.Activities
         #endregion
 
 
+        #region twitter login
+
+        private void LoginTwitter()
+        {
+            OAuth1Authenticator auth = new OAuth1Authenticator(
+                consumerKey: "rTkBXip6Mx0ViCgx42BzJUQNR",
+                consumerSecret: "ea0N8wzdVr5F3u59y0bL9h0d4wGF81EFSjHaOx9oQGQrYmKymx",
+                requestTokenUrl: new Uri("https://api.twitter.com/oauth/request_token"),
+                authorizeUrl: new Uri("https://api.twitter.com/oauth/authorize"),
+                accessTokenUrl: new Uri("https://api.twitter.com/oauth/access_token"),
+               callbackUrl: new Uri("https://xamarinandroidtraining-279113.firebaseapp.com/__/auth/handler")
+
+
+            );
+
+            auth.Completed += twitter_auth_Completed;
+            StartActivity(auth.GetUI(this));
+        }
+
+        private void twitter_auth_Completed(object sender, AuthenticatorCompletedEventArgs eventArgs)
+        {
+            if (eventArgs.IsAuthenticated)
+            {
+                Toast.MakeText(this, "LoggedIn with Twitter", ToastLength.Long).Show();
+
+            }
+        }
+
+
+        #endregion
 
     }
 }
