@@ -40,7 +40,7 @@ namespace XamarinAndroidTraining.Activities
         void SendNotification(string messageBody, IDictionary<string, string> data)
         {
             var intent = new Intent(Application.Context, typeof(DashboardActivity));
-            intent.AddFlags(ActivityFlags.SingleTop);
+            intent.AddFlags(ActivityFlags.ClearTop);
             foreach (var key in data.Keys)
             {
                 intent.PutExtra(key, data[key]);

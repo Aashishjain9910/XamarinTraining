@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
@@ -14,7 +15,7 @@ using Android.Widget;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "DashboardActivity", Theme = "@style/Theme.DesignDemo")]
+    [Activity(Label = "DashboardActivity", Theme = "@style/Theme.DesignDemo",LaunchMode =LaunchMode.SingleTask)]
     public class DashboardActivity : AppCompatActivity
     {
         //static int requestId = 1;
@@ -111,6 +112,15 @@ namespace XamarinAndroidTraining.Activities
             Intent intent = new Intent(this, typeof(LoginActivity));
             StartActivity(intent);
         }
+
+        protected override void OnNewIntent(Intent intent)
+        {
+            base.OnNewIntent(intent);
+
+            Toast.MakeText(Android.App.Application.Context, "this is fcm notificatin dashboard page", ToastLength.Long).Show();
+        }
+
+
 
 
 

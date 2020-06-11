@@ -25,6 +25,7 @@ using Firebase;
 using Java.Lang;
 using Firebase.Iid;
 using Xamarin.Auth;
+using Firebase.Messaging;
 
 namespace XamarinAndroidTraining.Activities
 {
@@ -162,7 +163,7 @@ namespace XamarinAndroidTraining.Activities
                 requestTokenUrl:new Uri("https://api.twitter.com/oauth/request_token"),
                 authorizeUrl:new Uri("https://api.twitter.com/oauth/authorize"),
                 accessTokenUrl:new Uri("https://api.twitter.com/oauth/access_token"),
-               callbackUrl:new Uri("https://xamarinandroidtraining-279113.firebaseapp.com/__/auth/handler")
+               callbackUrl:new Uri("http://mobile.twitter.com/home")
 
 
             );
