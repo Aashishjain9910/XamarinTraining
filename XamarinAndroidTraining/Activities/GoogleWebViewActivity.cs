@@ -29,7 +29,7 @@ using Firebase.Messaging;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "GoogleWebViewActivity", MainLauncher = true)]
+    [Activity(Label = "GoogleWebViewActivity", MainLauncher = false)]
     public class GoogleWebViewActivity : Activity, IOnSuccessListener, IOnFailureListener    /* GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener*/
     {
         #region

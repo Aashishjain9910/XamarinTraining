@@ -11,7 +11,11 @@
 			android:resource="@drawable/User" />
 
 
-
+		<receiver android:name="broadcast_example.MySecondBroadcastReceiver">
+			<intent-filter>
+				<action android:name="MY_SPECIFIC_ACTION" />
+			</intent-filter>
+		</receiver>
 		<receiver
     android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
     android:exported="false" />

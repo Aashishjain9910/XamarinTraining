@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\BroadcastMessageActivity.cs" />
     <Compile Include="Activities\CameraActivity.cs" />
     <Compile Include="Activities\ContactListActivity.cs" />
     <Compile Include="Activities\DashboardActivity.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Fragment\SecondFragment.cs" />
     <Compile Include="Fragment\ThirdFragment.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MySecondBroadcastReceiver.cs" />
     <Compile Include="models\User.cs" />
     <Compile Include="Fragment\FirstFragment.cs" />
     <Compile Include="models\UserData.cs" />
@@ -288,6 +290,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\twitter.png" />
+    <AndroidResource Include="Resources\layout\BroadcastMessageLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
