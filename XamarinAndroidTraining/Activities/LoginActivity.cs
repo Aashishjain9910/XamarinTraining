@@ -157,7 +157,7 @@ namespace XamarinAndroidTraining.Activities
             StartActivity(intent);
         }
 
-
+        
         protected override void OnPause()
         {
 

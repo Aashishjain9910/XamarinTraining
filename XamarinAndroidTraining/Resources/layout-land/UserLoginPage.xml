@@ -1,0 +1,71 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#397286"
+    android:paddingHorizontal="40dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Login"
+        android:textSize="30sp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/white"
+        
+        android:id="@+id/txtHeading"
+        />
+   <!-- this is horizontal layout-->
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginVertical="10dp"
+        android:layout_below="@+id/txtHeading"
+        android:layout_centerInParent="true"
+        android:id="@+id/imgLogin"
+        android:src="@drawable/login"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/rounded_corner_edittext"
+        android:layout_below="@+id/imgLogin"
+        android:id="@+id/edtUsername"
+        android:textSize="22sp"
+        android:hint="Username"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="20dp"
+        android:layout_marginVertical="15dp"
+        android:background="@drawable/rounded_corner_edittext"
+        android:id="@+id/edtPassword"
+        android:layout_below="@+id/edtUsername"
+        android:textSize="22sp"
+        android:hint="Password"/>
+  
+    
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtPassword"
+        android:text="Remember Me"
+        android:buttonTint="@android:color/white"
+        android:textColor="@android:color/white"
+        android:id="@+id/cbRememberMe"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSend"
+        android:layout_marginVertical="10dp"
+        android:layout_below="@id/cbRememberMe"
+        android:textSize="22sp"
+        android:text="Send"
+        android:background="@drawable/roundedCorners_LoginButton"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

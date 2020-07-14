@@ -77,6 +77,7 @@
     <Compile Include="Activities\RegistrationActivity.cs" />
     <Compile Include="Activities\SplashScreenActivity.cs" />
     <Compile Include="Activities\TabbedFragmentActivity.cs" />
+    <Compile Include="Activities\UserLoginActivity.cs" />
     <Compile Include="Adapter\MyCustomListAdapter.cs" />
     <Compile Include="Fragment\FourthFragment.cs" />
     <Compile Include="Fragment\SecondFragment.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="models\UserData.cs" />
     <Compile Include="MyFirebaseIdInstance.cs" />
     <Compile Include="MyMessagingService.cs" />
+    <Compile Include="MyService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -291,6 +293,14 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\twitter.png" />
     <AndroidResource Include="Resources\layout\BroadcastMessageLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_truecaller.png" />
+    <AndroidResource Include="Resources\layout\UserLoginPage.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\login.png" />
+    <AndroidResource Include="Resources\layout-land\UserLoginPage.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

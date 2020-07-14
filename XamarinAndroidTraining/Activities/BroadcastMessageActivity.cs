@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "BroadcastMessageActivity", MainLauncher =true)]
+    [Activity(Label = "BroadcastMessageActivity", MainLauncher =false)]
     public class BroadcastMessageActivity : Activity
     {
         MyBroadcastReceiver myreceiver;

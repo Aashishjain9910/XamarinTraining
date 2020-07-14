@@ -12,7 +12,7 @@
 	<color name="colorReceipt">#818abd</color>
 	<color name="colorForgotPassword">#3e56db</color>
 	<color name="loginButton">#4bcab6</color>
-
+  <color name="sendButton">#87eefd</color>
 	<color name="buttonThemeColor">#4bcab6</color>
 	
 </resources>

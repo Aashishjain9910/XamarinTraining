@@ -15,7 +15,7 @@ using Android.Widget;
 
 namespace XamarinAndroidTraining.Activities
 {
-    [Activity(Label = "DashboardActivity", Theme = "@style/Theme.DesignDemo",LaunchMode =LaunchMode.SingleTask)]
+    [Activity(Label = "DashboardActivity", Theme = "@style/Theme.DesignDemo", LaunchMode = LaunchMode.SingleTask)]
     public class DashboardActivity : AppCompatActivity
     {
         //static int requestId = 1;
@@ -28,9 +28,6 @@ namespace XamarinAndroidTraining.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            
-
-
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.DashboardLayout);
             //msgText = FindViewById<TextView>(Resource.Id.msgText);
